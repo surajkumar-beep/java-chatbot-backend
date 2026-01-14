@@ -1,0 +1,49 @@
+question,answer
+What is file handling in Java?,"File handling allows Java programs to read and write data to files on the disk using classes like File, FileReader, and FileWriter."
+Which package is used for file handling?,The java.io and java.nio packages are used for file handling.
+How to create a file in Java?,File f = new File('demo.txt'); f.createNewFile();
+How to check if file exists?,File f = new File('data.txt'); if(f.exists()) System.out.println('Exists');
+How to delete a file?,File f = new File('old.txt'); f.delete();
+How to write to a file using FileWriter?,FileWriter fw = new FileWriter('out.txt'); fw.write('Hello'); fw.close();
+How to read from file using FileReader?,FileReader fr = new FileReader('data.txt'); int ch; while((ch=fr.read())!=-1) System.out.print((char)ch); fr.close();
+BufferedReader example,BufferedReader br = new BufferedReader(new FileReader('data.txt')); String line; while((line=br.readLine())!=null) System.out.println(line); br.close();
+BufferedWriter example,BufferedWriter bw = new BufferedWriter(new FileWriter('out.txt')); bw.write('Hi'); bw.newLine(); bw.close();
+Read file using Scanner,Scanner sc = new Scanner(new File('data.txt')); while(sc.hasNextLine()) System.out.println(sc.nextLine()); sc.close();
+How to get file size?,File f = new File('data.txt'); System.out.println(f.length());
+How to list all files in a directory?,File dir = new File('C:/folder'); for(File f : dir.listFiles()) System.out.println(f.getName());
+How to check if path is directory?,f.isDirectory();
+What is absolute path in Java?,It is the full path of a file or directory returned by f.getAbsolutePath().
+What is java.nio package?,It is a non-blocking I/O package for faster file and network operations.
+Read all lines using NIO Files class,List<String> lines = Files.readAllLines(Paths.get('data.txt'));
+Write to file using NIO,"Files.write(Paths.get('output.txt'), 'Hello'.getBytes());"
+Copy file using NIO,"Files.copy(Paths.get('a.txt'), Paths.get('b.txt'), StandardCopyOption.REPLACE_EXISTING);"
+Delete file using NIO,Files.delete(Paths.get('a.txt'));
+What is serialization?,Serialization is the process of converting an object into a byte stream for storage or transmission.
+Serializable example,class Student implements Serializable { int id; String name; }
+What is transient keyword?,It prevents serialization of specific fields.
+How to deserialize an object?,ObjectInputStream in = new ObjectInputStream(new FileInputStream('obj.txt')); Student s = (Student)in.readObject();
+What is JDBC?,JDBC (Java Database Connectivity) is an API to connect and execute queries on a database.
+Which package provides JDBC classes?,java.sql package.
+Steps to connect JDBC to database,1. Load driver 2. Create connection 3. Create statement 4. Execute query 5. Close connection.
+JDBC connection example,"Connection con = DriverManager.getConnection('jdbc:mysql://localhost:3306/db','user','pass');"
+Execute SELECT query example,Statement st = con.createStatement(); ResultSet rs = st.executeQuery('SELECT * FROM emp');
+What is PreparedStatement?,It is used to execute parameterized queries efficiently.
+PreparedStatement example,"PreparedStatement ps = con.prepareStatement('INSERT INTO emp VALUES (?,?)'); ps.setInt(1,1); ps.setString(2,'John'); ps.executeUpdate();"
+What is ResultSet?,It is a table of data returned by executing a query.
+How to iterate ResultSet?,while(rs.next()){ System.out.println(rs.getString(1)); }
+Close JDBC connection,con.close();
+What is networking in Java?,Networking allows communication between computers over a network using java.net package.
+What is Socket in Java?,Socket is an endpoint for communication between two machines.
+ServerSocket example,ServerSocket ss = new ServerSocket(6666); Socket s = ss.accept(); DataInputStream dis = new DataInputStream(s.getInputStream());
+Client socket example,"Socket s = new Socket('localhost',6666); DataOutputStream dout = new DataOutputStream(s.getOutputStream()); dout.writeUTF('Hello');"
+What is InetAddress class?,InetAddress represents IP address of a host.
+How to read data from URL in Java?,URL url = new URL('https://example.com'); BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+What is HttpURLConnection?,HttpURLConnection is used to send HTTP requests and receive responses.
+HttpURLConnection GET example,HttpURLConnection con = (HttpURLConnection) new URL('https://api.com').openConnection(); con.setRequestMethod('GET');
+What is DatagramSocket?,It is used for UDP connectionless communication.
+DatagramPacket example,"byte[] buf = new byte[1024]; DatagramPacket dp = new DatagramPacket(buf, buf.length, InetAddress.getByName('localhost'), 3000);"
+Difference between TCP and UDP in Java,"TCP is connection-oriented (Socket/ServerSocket), UDP is connectionless (DatagramSocket)."
+Get local host address example,InetAddress addr = InetAddress.getLocalHost(); System.out.println(addr.getHostAddress());
+Get host name from IP example,InetAddress addr = InetAddress.getByName('8.8.8.8'); System.out.println(addr.getHostName());
+Difference between InputStream and Reader classes,"InputStream reads bytes, Reader reads characters."
+Difference between FileInputStream and FileReader,"FileInputStream reads binary data, FileReader reads character data."

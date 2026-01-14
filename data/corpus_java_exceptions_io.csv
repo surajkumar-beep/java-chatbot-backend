@@ -1,0 +1,41 @@
+question,answer
+What is exception in Java?,"An exception is an event that disrupts normal flow of the program, e.g., ArithmeticException, NullPointerException."
+Difference between checked and unchecked exceptions,"Checked: compile-time (IOException, SQLException). Unchecked: runtime (ArithmeticException, NullPointerException)."
+Try-catch example in Java,"try{ int x=5/0; } catch(ArithmeticException e){ System.out.println(e); } finally{ System.out.println(""cleanup""); }"
+Multiple catch blocks example,try{ ... } catch(ArithmeticException e){ ... } catch(ArrayIndexOutOfBoundsException e){ ... }
+Throw keyword example,"void check(int n){ if(n<0) throw new IllegalArgumentException(""Negative""); }"
+Throws keyword example,"void readFile() throws IOException { FileReader fr = new FileReader(""in.txt""); }"
+Custom exception example,"class MyEx extends Exception{ MyEx(String msg){ super(msg); } } throw new MyEx(""error"");"
+Read file using FileReader,"FileReader fr = new FileReader(""in.txt""); int ch; while((ch=fr.read())!=-1) System.out.print((char)ch); fr.close();"
+Write file using FileWriter,"FileWriter fw = new FileWriter(""out.txt""); fw.write(""Hello""); fw.close();"
+Read file using BufferedReader,"BufferedReader br = new BufferedReader(new FileReader(""in.txt"")); String line; while((line=br.readLine())!=null) System.out.println(line); br.close();"
+Write file using BufferedWriter,"BufferedWriter bw = new BufferedWriter(new FileWriter(""out.txt"")); bw.write(""Hello""); bw.newLine(); bw.close();"
+Try-with-resources for file,"try(BufferedReader br=new BufferedReader(new FileReader(""in.txt""))) { String s; while((s=br.readLine())!=null) System.out.println(s); } catch(IOException e){ e.printStackTrace(); }"
+Read all lines using Files API,"List<String> lines = Files.readAllLines(Paths.get(""in.txt"")); for(String l:lines) System.out.println(l);"
+Write all lines using Files API,"List<String> lines = Arrays.asList(""A"",""B""); Files.write(Paths.get(""out.txt""), lines);"
+Check if file exists,"if(Files.exists(Paths.get(""file.txt""))) System.out.println(""Exists"");"
+Copy file using Files API,"Files.copy(Paths.get(""src.txt""), Paths.get(""dest.txt""), StandardCopyOption.REPLACE_EXISTING);"
+What is serialization in Java?,Serialization converts an object into a byte stream for storage or transmission.
+What is deserialization in Java?,Deserialization converts a byte stream back into a Java object.
+Serialization example,"class Person implements Serializable{ String name; }
+Person p = new Person(); ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(""p.obj"")); oos.writeObject(p); oos.close();"
+Deserialization example,"ObjectInputStream ois = new ObjectInputStream(new FileInputStream(""p.obj"")); Person p = (Person) ois.readObject(); ois.close();"
+Path example in Java NIO,"Path path = Paths.get(""file.txt""); System.out.println(path.toAbsolutePath());"
+Read file using NIO Files.lines(),"Files.lines(Paths.get(""in.txt"")).forEach(System.out::println);"
+Write file using NIO Files.write(),"List<String> lines = Arrays.asList(""A"",""B""); Files.write(Paths.get(""out.txt""), lines);"
+Check if path exists using NIO,"if(Files.exists(Paths.get(""file.txt""))) System.out.println(""Exists"");"
+Copy file using NIO Files.copy(),"Files.copy(Paths.get(""src.txt""), Paths.get(""dest.txt""), StandardCopyOption.REPLACE_EXISTING);"
+Read integers from file and sum,"BufferedReader br = new BufferedReader(new FileReader(""nums.txt"")); String line; int sum=0; while((line=br.readLine())!=null) sum+=Integer.parseInt(line); System.out.println(sum); br.close();"
+Handle multiple exceptions in one catch (Java 7+),try{ ... } catch(IOException | NumberFormatException e){ e.printStackTrace(); }
+Throw exception from method,"void check(int n) throws IOException { if(n<0) throw new IOException(""Negative""); }"
+Finally block example,"try{ ... } catch(Exception e){ ... } finally{ System.out.println(""Always executed""); }"
+Suppress exceptions using try-with-resources,"try(FileReader fr=new FileReader(""in.txt"")) { ... } catch(IOException e){ e.printStackTrace(); } // Auto closes resource"
+Create ByteBuffer in Java NIO,ByteBuffer buffer = ByteBuffer.allocate(1024);
+Write data to ByteBuffer,buffer.put((byte)65); buffer.flip();
+Read data from ByteBuffer,while(buffer.hasRemaining()) System.out.print((char)buffer.get());
+FileChannel example,"RandomAccessFile file = new RandomAccessFile(""file.txt"",""rw""); FileChannel channel = file.getChannel(); ByteBuffer buffer = ByteBuffer.allocate(1024); channel.read(buffer); buffer.flip(); while(buffer.hasRemaining()) System.out.print((char)buffer.get()); channel.close(); file.close();"
+Difference between FileInputStream and FileReader,"FileInputStream reads bytes, FileReader reads characters."
+Difference between Serializable and Externalizable,Serializable: default serialization. Externalizable: custom read/write implementation.
+What is IOException?,IOException is a checked exception for failed or interrupted I/O operations.
+What is FileNotFoundException?,FileNotFoundException is thrown when a file is not found or inaccessible.
+java exceptions file io summary,"Exception handling: try, catch, finally, throw, throws, custom exceptions. File I/O: FileReader/Writer, BufferedReader/Writer, Files API. Serialization & Deserialization. NIO: Path, Files, Channels, ByteBuffer."

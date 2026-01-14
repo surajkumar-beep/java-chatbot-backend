@@ -1,0 +1,1364 @@
+{
+  "missing_semicolon": {
+    "pattern": "';' expected",
+    "title": "Missing Semicolon",
+    "explanation": "Every Java statement must end with a semicolon. The compiler throws this when it encounters a missing one.",
+    "fix_example": "Add a semicolon: System.out.println(\"Hello\");"
+  },
+  "unmatched_parentheses": {
+    "pattern": "')' expected",
+    "title": "Unmatched Parentheses",
+    "explanation": "A closing parenthesis is missing or misplaced.",
+    "fix_example": "Ensure every '(' has a matching ')'."
+  },
+  "unmatched_curly_braces": {
+    "pattern": "reached end of file while parsing",
+    "title": "Unmatched Curly Braces",
+    "explanation": "A closing curly brace '}' is missing for a class, method, or block.",
+    "fix_example": "Match all '{' with corresponding '}'."
+  },
+  "unmatched_square_brackets": {
+    "pattern": "'\\\\]' expected",
+    "title": "Unmatched Square Brackets",
+    "explanation": "A closing square bracket ']' is missing in array or index syntax.",
+    "fix_example": "Ensure every '[' has a corresponding ']'."
+  },
+  "invalid_identifier": {
+    "pattern": "not a statement",
+    "title": "Invalid Identifier",
+    "explanation": "An identifier is invalid or used incorrectly, causing a syntax issue.",
+    "fix_example": "Avoid using keywords or illegal characters as identifiers."
+  },
+  "keyword_misuse": {
+    "pattern": "illegal start of expression",
+    "title": "Keyword Misuse",
+    "explanation": "A keyword is used where an expression or identifier is expected.",
+    "fix_example": "Check if-else, for, class, and other keywords are used in proper contexts."
+  },
+  "illegal_start_of_expression": {
+    "pattern": "illegal start of expression",
+    "title": "Illegal Start of Expression",
+    "explanation": "Occurs when a statement is misplaced or a keyword is used incorrectly.",
+    "fix_example": "Ensure statements are within methods or blocks and follow Java syntax."
+  },
+  "illegal_start_of_type": {
+    "pattern": "illegal start of type",
+    "title": "Illegal Start of Type",
+    "explanation": "Class or interface definitions contain invalid modifiers or misplaced elements.",
+    "fix_example": "Check class-level declarations and remove misplaced tokens."
+  },
+  "expected_token": {
+    "pattern": "expected",
+    "title": "Expected Token Error",
+    "explanation": "The compiler expected a specific symbol (like ')', '}', ';') but did not find it.",
+    "fix_example": "Read the error message to see which symbol is expected and insert it."
+  },
+  "reached_end_of_file_while_parsing": {
+    "pattern": "reached end of file while parsing",
+    "title": "Reached End of File While Parsing",
+    "explanation": "The compiler hit the end of the file before completing parsing.",
+    "fix_example": "Check for missing closing braces, parentheses, or unfinished statements."
+  },
+  "class_interface_enum_expected": {
+    "pattern": "class, interface, enum expected",
+    "title": "Class, Interface, or Enum Expected",
+    "explanation": "Top-level code must be a class, interface, or enum declaration.",
+    "fix_example": "Move executable statements inside a class or method."
+  },
+  "method_declaration_syntax_error": {
+    "pattern": "invalid method declaration",
+    "title": "Method Declaration Syntax Error",
+    "explanation": "Method declaration syntax is incorrect.",
+    "fix_example": "Use: [modifiers] returnType methodName(params) { ... }"
+  },
+  "variable_declaration_syntax_error": {
+    "pattern": "not a statement",
+    "title": "Variable Declaration Syntax Error",
+    "explanation": "Variable declarations are malformed or placed incorrectly.",
+    "fix_example": "Use: type name = value; inside a method or class."
+  },
+  "invalid_method_signature": {
+    "pattern": "invalid method declaration; return type required",
+    "title": "Invalid Method Signature",
+    "explanation": "Method declaration is missing a valid return type or name.",
+    "fix_example": "Specify a return type and a legal method name."
+  },
+  "incorrect_access_modifier_usage": {
+    "pattern": "modifier (public|private|protected) not allowed here",
+    "title": "Incorrect Access Modifier Usage",
+    "explanation": "An access modifier is used in a context where it is not allowed.",
+    "fix_example": "Use access modifiers only in class, method, or field declarations."
+  },
+  "duplicate_modifier": {
+    "pattern": "repeated modifier",
+    "title": "Duplicate Modifier",
+    "explanation": "A modifier such as public, static, or final is repeated unnecessarily.",
+    "fix_example": "Remove duplicate modifiers, e.g., 'public public class Test' is invalid."
+  },
+  "invalid_modifier": {
+    "pattern": "modifier .* not allowed here",
+    "title": "Invalid Modifier",
+    "explanation": "A modifier is being used where it is not permitted.",
+    "fix_example": "Check Java rules for where modifiers like static, abstract, final are allowed."
+  },
+  "static_context_syntax_error": {
+    "pattern": "non-static .* cannot be referenced from a static context",
+    "title": "Static Context Syntax Error",
+    "explanation": "Instance members are used directly inside a static context.",
+    "fix_example": "Create an instance or make members static if appropriate."
+  },
+  "return_type_missing": {
+    "pattern": "invalid method declaration; return type required",
+    "title": "Return Type Missing",
+    "explanation": "A return type is missing in method declaration.",
+    "fix_example": "Add a return type, e.g., void or an appropriate type."
+  },
+  "invalid_return_statement_syntax": {
+    "pattern": "'return' outside method",
+    "title": "Invalid Return Statement",
+    "explanation": "A return statement appears outside a method or constructor.",
+    "fix_example": "Ensure return is only inside methods or constructors."
+  },
+  "constructor_syntax_error": {
+    "pattern": "invalid method declaration; return type required",
+    "title": "Constructor Syntax Error",
+    "explanation": "Constructor is incorrectly declared with a return type or wrong name.",
+    "fix_example": "Constructor must have same name as class and no return type."
+  },
+  "package_declaration_syntax_error": {
+    "pattern": "unexpected type",
+    "title": "Package Declaration Syntax Error",
+    "explanation": "The package declaration may be malformed or not at the top of the file.",
+    "fix_example": "Use: package com.example; as the first non-comment line."
+  },
+  "import_statement_syntax_error": {
+    "pattern": "cannot find symbol\\s*symbol:\\s*class",
+    "title": "Import Statement Syntax Error",
+    "explanation": "The import statement refers to a non-existing or incorrect package/class.",
+    "fix_example": "Verify package and class names in import statements."
+  },
+  "invalid_statement_placement": {
+    "pattern": "class, interface, enum expected",
+    "title": "Invalid Statement Placement",
+    "explanation": "Statements are placed where only declarations are allowed.",
+    "fix_example": "Move executable code into methods or blocks."
+  },
+  "unterminated_string_literal": {
+    "pattern": "unclosed string literal",
+    "title": "Unterminated String Literal",
+    "explanation": "A string literal is missing the closing quote.",
+    "fix_example": "Ensure all string literals start and end with double quotes."
+  },
+  "invalid_escape_sequence": {
+    "pattern": "illegal escape character",
+    "title": "Invalid Escape Sequence",
+    "explanation": "An invalid escape sequence is used in a string or char literal.",
+    "fix_example": "Use valid escapes like \\n, \\t, \\\\\" or \\\\."
+  },
+  "invalid_character_literal": {
+    "pattern": "unclosed character literal",
+    "title": "Invalid Character Literal",
+    "explanation": "A character literal is not properly formed.",
+    "fix_example": "Use single quotes around a single character, e.g., 'a'."
+  },
+  "numeric_literal_format_error": {
+    "pattern": "integer number too large|malformed floating point literal",
+    "title": "Numeric Literal Format Error",
+    "explanation": "A numeric literal is out of range or incorrectly formatted.",
+    "fix_example": "Check for correct use of digits, underscores, and suffixes like L or F."
+  },
+  "array_declaration_syntax_error": {
+    "pattern": "illegal start of expression",
+    "title": "Array Declaration Syntax Error",
+    "explanation": "Array syntax is incorrect or placed improperly.",
+    "fix_example": "Use: int[] arr = new int[10];"
+  },
+  "generic_syntax_error": {
+    "pattern": "illegal start of type|cannot infer type arguments for",
+    "title": "Generic Syntax Error",
+    "explanation": "Generic type parameters are misused or incorrectly declared.",
+    "fix_example": "Check generic type usage like List<String> and ensure proper syntax."
+  },
+  "annotation_syntax_error": {
+    "pattern": "annotation type not applicable to this kind of declaration",
+    "title": "Annotation Syntax Error",
+    "explanation": "An annotation is used in an unsupported context.",
+    "fix_example": "Use annotations only on supported elements (class, method, field, etc.)."
+  },
+  "switch_statement_syntax_error": {
+    "pattern": "orphaned case",
+    "title": "Switch Statement Syntax Error",
+    "explanation": "A case or default label appears outside a switch statement.",
+    "fix_example": "Place case/default labels only inside a valid switch block."
+  },
+  "try_catch_syntax_error": {
+    "pattern": "'catch' without 'try'",
+    "title": "Try\u2013Catch Syntax Error",
+    "explanation": "A catch block appears without a corresponding try block.",
+    "fix_example": "Ensure every catch follows a try block."
+  },
+  "catch_block_ordering_error": {
+    "pattern": "exception .* has already been caught",
+    "title": "Catch Block Ordering Error",
+    "explanation": "A more specific exception is caught after a more general one.",
+    "fix_example": "Place specific exception catch blocks before general ones."
+  },
+  "finally_block_syntax_error": {
+    "pattern": "'finally' without 'try'",
+    "title": "Finally Block Syntax Error",
+    "explanation": "A finally block appears without a try block.",
+    "fix_example": "Use finally only after a valid try (and optional catch)."
+  },
+  "if_else_syntax_error": {
+    "pattern": "'else' without 'if'",
+    "title": "If\u2013Else Syntax Error",
+    "explanation": "An else statement does not have a matching if.",
+    "fix_example": "Ensure every else has a corresponding if with proper braces."
+  },
+  "loop_syntax_error": {
+    "pattern": "'while' expected|'for' expected",
+    "title": "Loop Syntax Error",
+    "explanation": "Loop syntax for for/while/do-while is incorrect.",
+    "fix_example": "Check parentheses, semicolons, and block braces in loop statements."
+  },
+  "lambda_syntax_error": {
+    "pattern": "lambda expressions are not supported in -source",
+    "title": "Lambda Expression Syntax/Error",
+    "explanation": "Lambda expression used with an unsupported source level or incorrect syntax.",
+    "fix_example": "Use correct lambda syntax and Java 8+ compilation options."
+  },
+  "enum_declaration_syntax_error": {
+    "pattern": "enum constant expected",
+    "title": "Enum Declaration Syntax Error",
+    "explanation": "Enum constants or body are incorrectly defined.",
+    "fix_example": "Separate enum constants with commas and define them before methods."
+  },
+  "interface_method_syntax_error": {
+    "pattern": "; expected",
+    "title": "Interface Method Syntax Error",
+    "explanation": "Interface methods in older Java versions must be abstract-like declarations without bodies.",
+    "fix_example": "Use method signatures without bodies, or use default/static methods properly in newer Java."
+  },
+  "abstract_method_syntax_error": {
+    "pattern": "missing method body, or declare abstract",
+    "title": "Abstract Method Syntax Error",
+    "explanation": "An abstract method lacks a body or is not marked abstract.",
+    "fix_example": "Either provide a body or declare the method abstract in an abstract class."
+  },
+  "type_mismatch": {
+    "pattern": "incompatible types",
+    "title": "Type Mismatch",
+    "explanation": "The assigned value type does not match the variable type.",
+    "fix_example": "Ensure both sides of the assignment use compatible types or cast safely."
+  },
+  "incompatible_data_type_assignment": {
+    "pattern": "incompatible types",
+    "title": "Incompatible Data Type Assignment",
+    "explanation": "A value is assigned to a variable of an incompatible type.",
+    "fix_example": "Use proper type conversion or correct the variable type."
+  },
+  "possible_lossy_conversion": {
+    "pattern": "possible lossy conversion",
+    "title": "Possible Lossy Conversion",
+    "explanation": "A narrowing primitive conversion may result in data loss.",
+    "fix_example": "Use an explicit cast only if safe, or use a wider type."
+  },
+  "incompatible_return_type": {
+    "pattern": "incompatible types: .* cannot be converted to",
+    "title": "Incompatible Return Type",
+    "explanation": "Method return type doesn't match the declared type.",
+    "fix_example": "Change return type or return value to make them compatible."
+  },
+  "cannot_find_symbol": {
+    "pattern": "cannot find symbol",
+    "title": "Cannot Find Symbol",
+    "explanation": "A variable, method, or class is referenced but not defined or imported.",
+    "fix_example": "Check spelling, imports, and declarations."
+  },
+  "variable_not_initialized": {
+    "pattern": "variable .* might not have been initialized",
+    "title": "Variable Not Initialized",
+    "explanation": "A local variable is used before being given a value.",
+    "fix_example": "Assign a value to the variable before first use."
+  },
+  "unreachable_statement": {
+    "pattern": "unreachable statement",
+    "title": "Unreachable Statement",
+    "explanation": "The compiler detects code that can never execute.",
+    "fix_example": "Remove or refactor code so that all statements are reachable."
+  },
+  "missing_return_statement": {
+    "pattern": "missing return statement",
+    "title": "Missing Return Statement",
+    "explanation": "A method with non-void return type does not always return a value.",
+    "fix_example": "Return a value on all code paths in the method."
+  },
+  "incompatible_operand_types": {
+    "pattern": "bad operand types for binary operator",
+    "title": "Incompatible Operand Types",
+    "explanation": "An operator is applied to operands of incompatible types.",
+    "fix_example": "Ensure correct operand types or cast appropriately."
+  },
+  "operator_cannot_be_applied": {
+    "pattern": "operator .* cannot be applied to",
+    "title": "Operator Cannot Be Applied",
+    "explanation": "An operator is used with unsupported operand types.",
+    "fix_example": "Check operator and operand types for compatibility."
+  },
+  "array_index_type_mismatch": {
+    "pattern": "array required, but .* found",
+    "title": "Array Index Type Mismatch",
+    "explanation": "Array indexing used on a non-array type or with wrong syntax.",
+    "fix_example": "Ensure the variable is an array and index is an int."
+  },
+  "invalid_cast": {
+    "pattern": "inconvertible types",
+    "title": "Invalid Cast",
+    "explanation": "A cast between incompatible reference types was attempted.",
+    "fix_example": "Use instanceof before casting and ensure the cast is legal."
+  },
+  "compile_time_class_not_found": {
+    "pattern": "cannot find symbol\\s*symbol:\\s*class",
+    "title": "Class Not Found (Compile Time)",
+    "explanation": "The referenced class is not found by the compiler.",
+    "fix_example": "Add the correct import or ensure the class is in the classpath."
+  },
+  "package_does_not_exist": {
+    "pattern": "package .* does not exist",
+    "title": "Package Does Not Exist",
+    "explanation": "The imported package cannot be found.",
+    "fix_example": "Check package spelling and add required libraries."
+  },
+  "duplicate_class": {
+    "pattern": "duplicate class",
+    "title": "Duplicate Class",
+    "explanation": "Two classes with the same fully qualified name exist.",
+    "fix_example": "Remove or rename duplicate class files."
+  },
+  "duplicate_method_signature": {
+    "pattern": "method .* is already defined in class",
+    "title": "Duplicate Method Signature",
+    "explanation": "A method with the same signature exists already in the class.",
+    "fix_example": "Rename the method or change its parameters."
+  },
+  "duplicate_variable": {
+    "pattern": "is already defined in",
+    "title": "Duplicate Variable",
+    "explanation": "A variable with the same name already exists in the scope.",
+    "fix_example": "Rename the variable or remove the duplicate declaration."
+  },
+  "method_not_found": {
+    "pattern": "cannot find symbol\\s*symbol:\\s*method",
+    "title": "Method Not Found",
+    "explanation": "The method is not declared or visible in the class.",
+    "fix_example": "Check method name, parameters, and class imports."
+  },
+  "method_argument_mismatch": {
+    "pattern": "no suitable method found",
+    "title": "Method Argument Mismatch",
+    "explanation": "No method matches the provided argument types.",
+    "fix_example": "Ensure arguments match the declared parameter types."
+  },
+  "ambiguous_method_call": {
+    "pattern": "reference to .* is ambiguous",
+    "title": "Ambiguous Method Call",
+    "explanation": "The compiler cannot decide between multiple overloaded methods.",
+    "fix_example": "Cast arguments explicitly or change method names."
+  },
+  "overriding_signature_mismatch": {
+    "pattern": "method does not override or implement a method from a supertype",
+    "title": "Overriding Method Signature Mismatch",
+    "explanation": "A method is marked @Override but does not match any superclass/interface method.",
+    "fix_example": "Adjust method signature to match the method being overridden."
+  },
+  "override_weaker_access": {
+    "pattern": "attempting to assign weaker access privileges",
+    "title": "Overriding with Weaker Access Privilege",
+    "explanation": "An overriding method cannot have more restrictive access than the overridden method.",
+    "fix_example": "Use same or less restrictive access (e.g., public instead of private)."
+  },
+  "override_final_method": {
+    "pattern": "cannot override final method",
+    "title": "Overriding Final Method",
+    "explanation": "Final methods cannot be overridden.",
+    "fix_example": "Remove override attempt or do not declare the superclass method as final."
+  },
+  "override_static_method": {
+    "pattern": "static method .* in .* cannot override",
+    "title": "Overriding Static Method",
+    "explanation": "Static methods are hidden, not overridden.",
+    "fix_example": "Remove @Override annotation or design differently."
+  },
+  "cannot_override_return_type": {
+    "pattern": "return type is incompatible with",
+    "title": "Cannot Override Return Type",
+    "explanation": "Overriding method returns a type incompatible with the superclass method.",
+    "fix_example": "Use a covariant return type or match the superclass return type."
+  },
+  "abstract_method_not_implemented": {
+    "pattern": "is not abstract and does not override abstract method",
+    "title": "Abstract Method Not Implemented",
+    "explanation": "A concrete class does not implement all abstract methods.",
+    "fix_example": "Implement all abstract methods or make the class abstract."
+  },
+  "instantiation_of_abstract_class": {
+    "pattern": "cannot instantiate the type",
+    "title": "Instantiation of Abstract Class",
+    "explanation": "Abstract classes cannot be instantiated directly.",
+    "fix_example": "Instantiate a concrete subclass instead."
+  },
+  "instantiation_of_interface": {
+    "pattern": "cannot instantiate the type",
+    "title": "Instantiation of Interface",
+    "explanation": "Interfaces cannot be instantiated directly.",
+    "fix_example": "Use a class implementing the interface or an anonymous implementation."
+  },
+  "final_variable_reassignment": {
+    "pattern": "cannot assign a value to final variable",
+    "title": "Final Variable Reassignment",
+    "explanation": "A final variable is being assigned a new value.",
+    "fix_example": "Remove the reassignment or do not declare the variable final."
+  },
+  "final_method_override_attempt": {
+    "pattern": "cannot override final method",
+    "title": "Final Method Override Attempt",
+    "explanation": "Attempt to override a method that is declared final.",
+    "fix_example": "Do not override the method or remove final from the parent method."
+  },
+  "final_class_inheritance": {
+    "pattern": "cannot inherit from final",
+    "title": "Final Class Inheritance Error",
+    "explanation": "A final class cannot be extended.",
+    "fix_example": "Do not extend final classes; use composition instead."
+  },
+  "static_reference_to_nonstatic": {
+    "pattern": "non-static .* cannot be referenced from a static context",
+    "title": "Static Reference to Non-Static Member",
+    "explanation": "Static methods cannot directly access instance members.",
+    "fix_example": "Create an instance or make members static if appropriate."
+  },
+  "invalid_throws_clause": {
+    "pattern": "exception .* is never thrown in body of corresponding try statement",
+    "title": "Invalid Throws or Catch Clause",
+    "explanation": "A catch or throws clause references an exception that cannot be thrown.",
+    "fix_example": "Remove the unused exception or adjust the code to actually throw it."
+  },
+  "unhandled_checked_exception": {
+    "pattern": "unreported exception .*; must be caught or declared to be thrown",
+    "title": "Unhandled Checked Exception",
+    "explanation": "A checked exception is not handled or declared.",
+    "fix_example": "Wrap it in try-catch or add it to the method's throws clause."
+  },
+  "cyclic_inheritance": {
+    "pattern": "cyclic inheritance involving",
+    "title": "Cyclic Inheritance Error",
+    "explanation": "Class hierarchies must not form cycles.",
+    "fix_example": "Remove circular inheritance relationships."
+  },
+  "invalid_super_constructor_call": {
+    "pattern": "constructor .* in class .* cannot be applied to given types",
+    "title": "Invalid Superclass Constructor Call",
+    "explanation": "The super() call does not match any superclass constructor.",
+    "fix_example": "Adjust super() arguments or change superclass constructors."
+  },
+  "no_default_constructor": {
+    "pattern": "cannot find symbol\\s*symbol:\\s*constructor",
+    "title": "No Default Constructor Available",
+    "explanation": "A class without a no-arg constructor is being instantiated with no arguments.",
+    "fix_example": "Add a default constructor or call an existing one with parameters."
+  },
+  "accessing_private_member": {
+    "pattern": "has private access",
+    "title": "Accessing Private Member",
+    "explanation": "Code is trying to access a private member from outside its class.",
+    "fix_example": "Use getters/setters or adjust access modifier."
+  },
+  "protected_access_violation": {
+    "pattern": "has protected access",
+    "title": "Protected Access Violation",
+    "explanation": "Protected member accessed from a non-subclass in a different package.",
+    "fix_example": "Access via subclass or adjust access modifiers."
+  },
+  "package_private_access_violation": {
+    "pattern": "is not public in .*; cannot be accessed from outside package",
+    "title": "Package-Private Access Violation",
+    "explanation": "A class with default (package-private) access is used from another package.",
+    "fix_example": "Make the class public or move code into the same package."
+  },
+  "generic_type_bounds_violation": {
+    "pattern": "bound mismatch",
+    "title": "Generic Type Bounds Violation",
+    "explanation": "Type argument does not satisfy the generic bounds.",
+    "fix_example": "Use a type parameter that meets all declared bounds."
+  },
+  "raw_type_usage": {
+    "pattern": "uses unchecked or unsafe operations",
+    "title": "Raw Type Usage",
+    "explanation": "A generic type is used without specifying type parameters.",
+    "fix_example": "Use parameterized types like List<String> instead of raw List."
+  },
+  "type_erasure_conflict": {
+    "pattern": "name clash: .* have the same erasure",
+    "title": "Type Erasure Conflict",
+    "explanation": "Overloaded methods conflict after generic type erasure.",
+    "fix_example": "Use distinct method names or change parameter lists."
+  },
+  "incompatible_generic_assignment": {
+    "pattern": "incompatible types: .* cannot be converted to",
+    "title": "Incompatible Generic Assignment",
+    "explanation": "Assignment between generic types that are not compatible.",
+    "fix_example": "Use compatible generic types or wildcards."
+  },
+  "annotation_type_mismatch": {
+    "pattern": "incompatible types: .* cannot be converted to",
+    "title": "Annotation Type Mismatch",
+    "explanation": "Annotation value type does not match the element type.",
+    "fix_example": "Provide a value matching the expected type."
+  },
+  "invalid_annotation_target": {
+    "pattern": "annotation type not applicable to this kind of declaration",
+    "title": "Invalid Annotation Target",
+    "explanation": "Annotation applied to an unsupported program element.",
+    "fix_example": "Use annotation only on supported targets."
+  },
+  "invalid_functional_interface": {
+    "pattern": "is not a functional interface",
+    "title": "Invalid Functional Interface",
+    "explanation": "Functional interface must have exactly one abstract method.",
+    "fix_example": "Ensure only one abstract method or use a non-functional interface."
+  },
+  "lambda_parameter_type_mismatch": {
+    "pattern": "incompatible parameter types in lambda expression",
+    "title": "Lambda Parameter Type Mismatch",
+    "explanation": "Lambda parameter types do not match the target functional interface.",
+    "fix_example": "Ensure lambda parameters match the abstract method's parameters."
+  },
+  "ArithmeticException": {
+    "pattern": "ArithmeticException",
+    "title": "ArithmeticException",
+    "explanation": "An invalid arithmetic operation occurred, often division by zero.",
+    "fix_example": "Check operands before division or modulo operations."
+  },
+  "NullPointerException": {
+    "pattern": "NullPointerException",
+    "title": "NullPointerException",
+    "explanation": "Code attempted to dereference a null reference.",
+    "fix_example": "Add null checks or ensure objects are properly initialized."
+  },
+  "ArrayIndexOutOfBoundsException": {
+    "pattern": "ArrayIndexOutOfBoundsException",
+    "title": "ArrayIndexOutOfBoundsException",
+    "explanation": "An array index is outside the valid range.",
+    "fix_example": "Ensure index is between 0 and array.length - 1."
+  },
+  "StringIndexOutOfBoundsException": {
+    "pattern": "StringIndexOutOfBoundsException",
+    "title": "StringIndexOutOfBoundsException",
+    "explanation": "A string index is outside the valid range.",
+    "fix_example": "Check string length before using charAt or substring."
+  },
+  "IndexOutOfBoundsException": {
+    "pattern": "IndexOutOfBoundsException",
+    "title": "IndexOutOfBoundsException",
+    "explanation": "An index in a list or collection is out of range.",
+    "fix_example": "Check index against collection size before access."
+  },
+  "NumberFormatException": {
+    "pattern": "NumberFormatException",
+    "title": "NumberFormatException",
+    "explanation": "A string that is not a valid number was parsed as a number.",
+    "fix_example": "Validate or sanitize input before parsing."
+  },
+  "ClassCastException": {
+    "pattern": "ClassCastException",
+    "title": "ClassCastException",
+    "explanation": "An object was cast to an incompatible type.",
+    "fix_example": "Use instanceof before casting and ensure correct type usage."
+  },
+  "IllegalArgumentException": {
+    "pattern": "IllegalArgumentException",
+    "title": "IllegalArgumentException",
+    "explanation": "A method received an argument that is illegal or inappropriate.",
+    "fix_example": "Validate method arguments and check bounds or nullability."
+  },
+  "IllegalStateException": {
+    "pattern": "IllegalStateException",
+    "title": "IllegalStateException",
+    "explanation": "A method has been invoked at an illegal or inappropriate time.",
+    "fix_example": "Check object state and method preconditions before invocation."
+  },
+  "NegativeArraySizeException": {
+    "pattern": "NegativeArraySizeException",
+    "title": "NegativeArraySizeException",
+    "explanation": "An attempt was made to create an array with negative size.",
+    "fix_example": "Verify that array sizes are non-negative."
+  },
+  "ArrayStoreException": {
+    "pattern": "ArrayStoreException",
+    "title": "ArrayStoreException",
+    "explanation": "An array element of an incompatible type was stored.",
+    "fix_example": "Ensure that only compatible types are stored in the array."
+  },
+  "ConcurrentModificationException": {
+    "pattern": "ConcurrentModificationException",
+    "title": "ConcurrentModificationException",
+    "explanation": "A collection was modified while iterating over it.",
+    "fix_example": "Use Iterator.remove() or concurrent collections."
+  },
+  "UnsupportedOperationException": {
+    "pattern": "UnsupportedOperationException",
+    "title": "UnsupportedOperationException",
+    "explanation": "An unsupported operation was attempted, often on an unmodifiable collection.",
+    "fix_example": "Check if the collection is modifiable before attempting modifications."
+  },
+  "NoSuchElementException": {
+    "pattern": "NoSuchElementException",
+    "title": "NoSuchElementException",
+    "explanation": "An attempt was made to access an element that does not exist.",
+    "fix_example": "Check hasNext()/hasMoreElements() before calling next()."
+  },
+  "InputMismatchException": {
+    "pattern": "InputMismatchException",
+    "title": "InputMismatchException",
+    "explanation": "Scanner input type does not match the expected type.",
+    "fix_example": "Validate input or use nextLine and parse manually."
+  },
+  "SecurityException": {
+    "pattern": "SecurityException",
+    "title": "SecurityException",
+    "explanation": "A security violation is detected by the security manager.",
+    "fix_example": "Check security policy restrictions and requested operation."
+  },
+  "UnsupportedClassVersionError": {
+    "pattern": "UnsupportedClassVersionError",
+    "title": "UnsupportedClassVersionError",
+    "explanation": "Class was compiled with a higher Java version than the runtime.",
+    "fix_example": "Recompile with a compatible target version or update the JVM."
+  },
+  "StackOverflowError": {
+    "pattern": "StackOverflowError",
+    "title": "StackOverflowError",
+    "explanation": "Excessive recursion or deep call stack exhausted the stack memory.",
+    "fix_example": "Fix recursion or reduce call depth."
+  },
+  "OutOfMemoryError": {
+    "pattern": "OutOfMemoryError",
+    "title": "OutOfMemoryError",
+    "explanation": "The JVM heap is exhausted.",
+    "fix_example": "Optimize memory usage or increase heap size."
+  },
+  "AssertionError": {
+    "pattern": "AssertionError",
+    "title": "AssertionError",
+    "explanation": "An assert statement failed at runtime.",
+    "fix_example": "Verify assertion conditions or disable assertions in production."
+  },
+  "ExceptionInInitializerError": {
+    "pattern": "ExceptionInInitializerError",
+    "title": "ExceptionInInitializerError",
+    "explanation": "An exception occurred during class initialization (static block).",
+    "fix_example": "Check static initializers and handle exceptions properly."
+  },
+  "NoClassDefFoundError": {
+    "pattern": "NoClassDefFoundError",
+    "title": "NoClassDefFoundError",
+    "explanation": "The JVM could not find a class definition at runtime that was present at compile time.",
+    "fix_example": "Ensure the required class is in the runtime classpath."
+  },
+  "AbstractMethodError": {
+    "pattern": "AbstractMethodError",
+    "title": "AbstractMethodError",
+    "explanation": "An application tries to call an abstract method that has not been implemented.",
+    "fix_example": "Ensure that all abstract methods are implemented in subclasses."
+  },
+  "UnsatisfiedLinkError": {
+    "pattern": "UnsatisfiedLinkError",
+    "title": "UnsatisfiedLinkError",
+    "explanation": "A native method could not be found.",
+    "fix_example": "Verify that native libraries are loaded and in the correct path."
+  },
+  "VerifyError": {
+    "pattern": "VerifyError",
+    "title": "VerifyError",
+    "explanation": "Bytecode verification failed.",
+    "fix_example": "Ensure classes are compiled correctly and not modified improperly."
+  },
+  "IncompatibleClassChangeError": {
+    "pattern": "IncompatibleClassChangeError",
+    "title": "IncompatibleClassChangeError",
+    "explanation": "A class has changed incompatibly since being compiled.",
+    "fix_example": "Recompile dependent classes and keep versions consistent."
+  },
+  "InstantiationError": {
+    "pattern": "InstantiationError",
+    "title": "InstantiationError",
+    "explanation": "An abstract class or interface was incorrectly instantiated at runtime.",
+    "fix_example": "Instantiate only concrete classes."
+  },
+  "LinkageError": {
+    "pattern": "LinkageError",
+    "title": "LinkageError",
+    "explanation": "A serious problem with class loading or linking has occurred.",
+    "fix_example": "Check for conflicting classes/JARs and version mismatches."
+  },
+  "ThreadDeath": {
+    "pattern": "ThreadDeath",
+    "title": "ThreadDeath",
+    "explanation": "The stop method was called on a thread, causing it to terminate.",
+    "fix_example": "Avoid using Thread.stop(); use interruption and flags instead."
+  },
+  "IllegalMonitorStateException": {
+    "pattern": "IllegalMonitorStateException",
+    "title": "IllegalMonitorStateException",
+    "explanation": "wait/notify was called on an object without owning its monitor.",
+    "fix_example": "Call wait/notify inside synchronized blocks on the same object."
+  },
+  "InterruptedException": {
+    "pattern": "InterruptedException",
+    "title": "InterruptedException",
+    "explanation": "A blocking operation was interrupted.",
+    "fix_example": "Handle interrupts properly and restore thread interrupt status if needed."
+  },
+  "ExecutionException": {
+    "pattern": "ExecutionException",
+    "title": "ExecutionException",
+    "explanation": "An exception was thrown during the execution of a task in a Future.",
+    "fix_example": "Check the cause of the ExecutionException and handle it accordingly."
+  },
+  "TimeoutException": {
+    "pattern": "TimeoutException",
+    "title": "TimeoutException",
+    "explanation": "An operation timed out.",
+    "fix_example": "Increase timeout or ensure operations complete in time."
+  },
+  "EOFException": {
+    "pattern": "EOFException",
+    "title": "EOFException",
+    "explanation": "Unexpected end of file or stream encountered.",
+    "fix_example": "Ensure correct protocol and complete data transmission."
+  },
+  "FileNotFoundException": {
+    "pattern": "FileNotFoundException",
+    "title": "FileNotFoundException",
+    "explanation": "A file with the specified path does not exist.",
+    "fix_example": "Check file path and ensure the file exists."
+  },
+  "IOException": {
+    "pattern": "IOException",
+    "title": "IOException",
+    "explanation": "A general I/O error occurred.",
+    "fix_example": "Handle I/O exceptions with try-catch and provide fallbacks."
+  },
+  "SocketException": {
+    "pattern": "SocketException",
+    "title": "SocketException",
+    "explanation": "A network socket error occurred.",
+    "fix_example": "Check network connectivity and socket configuration."
+  },
+  "BindException": {
+    "pattern": "BindException",
+    "title": "BindException",
+    "explanation": "A port is already in use or cannot be bound.",
+    "fix_example": "Use a different port or close the process using the port."
+  },
+  "ConnectException": {
+    "pattern": "ConnectException",
+    "title": "ConnectException",
+    "explanation": "Connection refused or host unreachable.",
+    "fix_example": "Check server availability and network configuration."
+  },
+  "UnknownHostException": {
+    "pattern": "UnknownHostException",
+    "title": "UnknownHostException",
+    "explanation": "The IP address of a host could not be determined.",
+    "fix_example": "Verify host name and DNS configuration."
+  },
+  "MalformedURLException": {
+    "pattern": "MalformedURLException",
+    "title": "MalformedURLException",
+    "explanation": "A malformed URL was used.",
+    "fix_example": "Check URL syntax, protocol, and special characters."
+  },
+  "SSLException": {
+    "pattern": "SSLException",
+    "title": "SSLException",
+    "explanation": "An SSL-related error occurred.",
+    "fix_example": "Check certificates, protocols, and SSL configuration."
+  },
+  "ClassNotFoundException": {
+    "pattern": "ClassNotFoundException",
+    "title": "ClassNotFoundException",
+    "explanation": "A class could not be located at runtime.",
+    "fix_example": "Ensure the class is present in the classpath."
+  },
+  "ReflectiveOperationException": {
+    "pattern": "ReflectiveOperationException",
+    "title": "ReflectiveOperationException",
+    "explanation": "An error occurred during reflection operations.",
+    "fix_example": "Verify that fields/methods exist and are accessible."
+  },
+  "InvocationTargetException": {
+    "pattern": "InvocationTargetException",
+    "title": "InvocationTargetException",
+    "explanation": "An exception was thrown by an invoked method via reflection.",
+    "fix_example": "Inspect the underlying cause (getCause()) and fix it."
+  },
+  "MissingResourceException": {
+    "pattern": "MissingResourceException",
+    "title": "MissingResourceException",
+    "explanation": "A resource required by ResourceBundle could not be found.",
+    "fix_example": "Ensure resource bundles and property files are present and correctly named."
+  },
+  "off_by_one_error": {
+    "pattern": "",
+    "title": "Off-by-One Error",
+    "explanation": "Loop bounds or index calculations are off by one.",
+    "fix_example": "Check whether loops should use < or <= and index ranges carefully."
+  },
+  "infinite_loop_mistake": {
+    "pattern": "",
+    "title": "Infinite Loop Mistake",
+    "explanation": "Loop condition never becomes false, causing an infinite loop.",
+    "fix_example": "Ensure the loop variable is updated and that exit conditions are reachable."
+  },
+  "incorrect_loop_condition": {
+    "pattern": "",
+    "title": "Incorrect Loop Condition",
+    "explanation": "Loop condition logic does not match intended behavior.",
+    "fix_example": "Review condition and test with edge cases."
+  },
+  "wrong_operator_usage": {
+    "pattern": "",
+    "title": "Wrong Operator Usage",
+    "explanation": "Incorrect logical or arithmetic operator is used.",
+    "fix_example": "Check whether you meant ==, !=, &&, ||, +, -, *, /, or %."
+  },
+  "using_double_equals_instead_of_equals": {
+    "pattern": "",
+    "title": "Using == Instead of .equals()",
+    "explanation": "== compares references for objects instead of their contents.",
+    "fix_example": "Use .equals() for content comparison of strings and objects."
+  },
+  "integer_division_mistake": {
+    "pattern": "",
+    "title": "Integer Division Mistake",
+    "explanation": "Integer division truncates decimal part unexpectedly.",
+    "fix_example": "Use double types or cast operands to double when fractional results are needed."
+  },
+  "floating_point_precision_mistake": {
+    "pattern": "",
+    "title": "Floating-Point Precision Mistake",
+    "explanation": "Floating-point arithmetic can result in precision loss.",
+    "fix_example": "Use BigDecimal for precise decimal calculations like money."
+  },
+  "ignoring_operator_precedence": {
+    "pattern": "",
+    "title": "Ignoring Operator Precedence",
+    "explanation": "Expressions may be evaluated in an unintended order.",
+    "fix_example": "Use parentheses to make evaluation order explicit."
+  },
+  "incorrect_variable_scope_usage": {
+    "pattern": "",
+    "title": "Incorrect Variable Scope Usage",
+    "explanation": "Variables are declared in the wrong scope, causing visibility issues.",
+    "fix_example": "Declare variables in the narrowest necessary scope."
+  },
+  "shadowing_variables_unintentionally": {
+    "pattern": "",
+    "title": "Unintentional Variable Shadowing",
+    "explanation": "Inner-scope variables hide outer-scope variables.",
+    "fix_example": "Use different names or refer to this.field when needed."
+  },
+  "using_uninitialized_logic_values": {
+    "pattern": "",
+    "title": "Using Uninitialized Logic Values",
+    "explanation": "Logical decisions are based on default or uninitialized values.",
+    "fix_example": "Initialize variables clearly before use in conditions."
+  },
+  "hard_coded_values_magic_numbers": {
+    "pattern": "",
+    "title": "Hard-Coded Values (Magic Numbers)",
+    "explanation": "Magic numbers reduce readability and maintainability.",
+    "fix_example": "Replace with named constants or configuration values."
+  },
+  "not_handling_null_cases": {
+    "pattern": "",
+    "title": "Not Handling Null Cases",
+    "explanation": "Ignoring potential nulls can lead to NullPointerExceptions.",
+    "fix_example": "Add null checks or use Optional to represent optional values."
+  },
+  "ignoring_exception_handling": {
+    "pattern": "",
+    "title": "Ignoring Exception Handling",
+    "explanation": "Exceptions are not handled or considered.",
+    "fix_example": "Use try-catch or throws declarations thoughtfully."
+  },
+  "catching_generic_exception": {
+    "pattern": "",
+    "title": "Catching Generic Exception",
+    "explanation": "Catching Exception makes it hard to distinguish specific failure causes.",
+    "fix_example": "Catch more specific exceptions to handle different cases appropriately."
+  },
+  "swallowing_exceptions_silently": {
+    "pattern": "",
+    "title": "Swallowing Exceptions Silently",
+    "explanation": "Empty catch blocks hide problems and make debugging difficult.",
+    "fix_example": "Log exceptions or rethrow them with meaningful messages."
+  },
+  "resource_leak_not_closing": {
+    "pattern": "",
+    "title": "Resource Leak (Not Closing Resources)",
+    "explanation": "Failing to close streams, readers, or connections can exhaust resources.",
+    "fix_example": "Use try-with-resources or finally blocks to close resources."
+  },
+  "memory_leak_via_references": {
+    "pattern": "",
+    "title": "Memory Leak via Object References",
+    "explanation": "Unneeded references prevent garbage collection.",
+    "fix_example": "Set references to null or reduce object lifetimes appropriately."
+  },
+  "inefficient_data_structure_choice": {
+    "pattern": "",
+    "title": "Inefficient Data Structure Choice",
+    "explanation": "Using suboptimal collections impacts performance.",
+    "fix_example": "Choose data structures based on access, search, and update patterns."
+  },
+  "wrong_algorithm_selection": {
+    "pattern": "",
+    "title": "Wrong Algorithm Selection",
+    "explanation": "An inefficient algorithm chosen for a large input size.",
+    "fix_example": "Analyze complexity and use more optimal algorithms."
+  },
+  "premature_optimization_mistake": {
+    "pattern": "",
+    "title": "Premature Optimization",
+    "explanation": "Optimizing too early can complicate code without real benefit.",
+    "fix_example": "Optimize only after profiling and identifying real bottlenecks."
+  },
+  "overcomplicated_logic": {
+    "pattern": "",
+    "title": "Overcomplicated Logic",
+    "explanation": "Very complex logic is hard to understand and maintain.",
+    "fix_example": "Refactor into simpler, smaller methods."
+  },
+  "code_duplication": {
+    "pattern": "",
+    "title": "Code Duplication",
+    "explanation": "Copy-pasted code increases maintenance effort.",
+    "fix_example": "Extract common logic into reusable methods."
+  },
+  "poor_method_naming": {
+    "pattern": "",
+    "title": "Poor Method Naming",
+    "explanation": "Method names do not reflect their behavior clearly.",
+    "fix_example": "Choose descriptive names that indicate the method's purpose."
+  },
+  "poor_class_design": {
+    "pattern": "",
+    "title": "Poor Class Design",
+    "explanation": "Classes do not have clear responsibilities or structure.",
+    "fix_example": "Apply object-oriented design principles and refactor responsibilities."
+  },
+  "violating_single_responsibility": {
+    "pattern": "",
+    "title": "Violating Single Responsibility Principle",
+    "explanation": "A class or method does too many unrelated things.",
+    "fix_example": "Split responsibilities into separate classes or methods."
+  },
+  "tight_coupling_between_classes": {
+    "pattern": "",
+    "title": "Tight Coupling Between Classes",
+    "explanation": "Classes depend heavily on each other's implementations.",
+    "fix_example": "Introduce interfaces and dependency injection."
+  },
+  "excessive_use_of_static": {
+    "pattern": "",
+    "title": "Excessive Use of Static",
+    "explanation": "Too many static methods/fields can lead to poor design.",
+    "fix_example": "Prefer instance methods and proper object design."
+  },
+  "misusing_inheritance_instead_of_composition": {
+    "pattern": "",
+    "title": "Misusing Inheritance Instead of Composition",
+    "explanation": "Inheritance is used where composition would be more appropriate.",
+    "fix_example": "Use composition to reuse functionality rather than deep inheritance hierarchies."
+  },
+  "incorrect_method_overriding_logic": {
+    "pattern": "",
+    "title": "Incorrect Method Overriding Logic",
+    "explanation": "Override behavior does not respect superclass contract.",
+    "fix_example": "Follow Liskov Substitution Principle and base class expectations."
+  },
+  "forgetting_break_in_switch": {
+    "pattern": "",
+    "title": "Forgetting Break in Switch",
+    "explanation": "Missing break causes unintended fall-through between cases.",
+    "fix_example": "Add break statements or intentional fall-through comments."
+  },
+  "modifying_collection_while_iterating": {
+    "pattern": "",
+    "title": "Modifying Collection While Iterating",
+    "explanation": "Changing collection during iteration can cause runtime errors.",
+    "fix_example": "Use Iterator.remove() or collect changes and apply after iteration."
+  },
+  "using_mutable_objects_as_map_keys": {
+    "pattern": "",
+    "title": "Using Mutable Objects as Map Keys",
+    "explanation": "Mutating a key used in maps can break lookups.",
+    "fix_example": "Use immutable keys or avoid mutating key fields."
+  },
+  "incorrect_equals_hashcode": {
+    "pattern": "",
+    "title": "Incorrect equals\u2013hashCode Implementation",
+    "explanation": "Inconsistent equals and hashCode cause map or set behavior issues.",
+    "fix_example": "Ensure both methods follow the contract and use same fields."
+  },
+  "ignoring_thread_safety": {
+    "pattern": "",
+    "title": "Ignoring Thread Safety",
+    "explanation": "Concurrent access to shared state without synchronization.",
+    "fix_example": "Use synchronization, locks, or concurrent data structures."
+  },
+  "race_condition": {
+    "pattern": "",
+    "title": "Race Condition",
+    "explanation": "Program behavior depends on unpredictable thread scheduling.",
+    "fix_example": "Protect shared state with synchronization or lock-free algorithms."
+  },
+  "deadlock_risk": {
+    "pattern": "",
+    "title": "Deadlock Risk",
+    "explanation": "Multiple locks obtained in inconsistent order can deadlock.",
+    "fix_example": "Always acquire locks in the same global order."
+  },
+  "improper_synchronization": {
+    "pattern": "",
+    "title": "Improper Synchronization",
+    "explanation": "Incorrect use of synchronized or locks leads to concurrency bugs.",
+    "fix_example": "Synchronize on the correct objects and minimize lock scope."
+  },
+  "blocking_in_main_thread": {
+    "pattern": "",
+    "title": "Blocking in Main/UI Thread",
+    "explanation": "Long-running tasks block the main or UI thread.",
+    "fix_example": "Run heavy tasks in background threads."
+  },
+  "misusing_concurrency_utilities": {
+    "pattern": "",
+    "title": "Misusing Concurrency Utilities",
+    "explanation": "Incorrect use of executors, futures, or semaphores.",
+    "fix_example": "Follow java.util.concurrent best practices and examples."
+  },
+  "assuming_execution_order_in_threads": {
+    "pattern": "",
+    "title": "Assuming Execution Order in Threads",
+    "explanation": "Thread scheduling assumptions lead to fragile code.",
+    "fix_example": "Use proper coordination mechanisms like join(), locks, or conditions."
+  },
+  "not_validating_user_input": {
+    "pattern": "",
+    "title": "Not Validating User Input",
+    "explanation": "Lack of validation can cause crashes or vulnerabilities.",
+    "fix_example": "Validate all external inputs for type, range, and format."
+  },
+  "trusting_external_data_blindly": {
+    "pattern": "",
+    "title": "Trusting External Data Blindly",
+    "explanation": "External data sources are used directly without checks.",
+    "fix_example": "Sanitize and validate data from files, networks, or users."
+  },
+  "incorrect_file_path_handling": {
+    "pattern": "",
+    "title": "Incorrect File Path Handling",
+    "explanation": "Hard-coded or platform-specific paths break portability.",
+    "fix_example": "Use java.nio.file.Path and platform-independent separators."
+  },
+  "platform_dependent_assumptions": {
+    "pattern": "",
+    "title": "Platform-Dependent Assumptions",
+    "explanation": "Assuming OS-specific behavior (e.g., line endings, file separators).",
+    "fix_example": "Use platform-independent APIs and constants."
+  },
+  "ignoring_edge_cases": {
+    "pattern": "",
+    "title": "Ignoring Edge Cases",
+    "explanation": "Code fails for boundary conditions or special inputs.",
+    "fix_example": "Test with empty, null, min/max values, and unusual cases."
+  },
+  "lack_of_input_boundary_checks": {
+    "pattern": "",
+    "title": "Lack of Input Boundary Checks",
+    "explanation": "Inputs are not checked for valid ranges.",
+    "fix_example": "Add checks before processing inputs."
+  },
+  "poor_error_messages": {
+    "pattern": "",
+    "title": "Poor Error Messages",
+    "explanation": "Unclear or missing error messages hinder debugging.",
+    "fix_example": "Provide descriptive messages with context and possible causes."
+  },
+  "logging_sensitive_data": {
+    "pattern": "",
+    "title": "Logging Sensitive Data",
+    "explanation": "Sensitive information is printed in logs.",
+    "fix_example": "Avoid logging passwords, tokens, or personal data."
+  },
+  "ignoring_performance_bottlenecks": {
+    "pattern": "",
+    "title": "Ignoring Performance Bottlenecks",
+    "explanation": "Performance issues go unaddressed.",
+    "fix_example": "Profile the application and optimize hot paths."
+  },
+  "not_writing_unit_tests": {
+    "pattern": "",
+    "title": "Not Writing Unit Tests",
+    "explanation": "Lack of tests reduces confidence in changes.",
+    "fix_example": "Add unit tests for important methods and behavior."
+  },
+  "overfitting_logic_to_sample_data": {
+    "pattern": "",
+    "title": "Overfitting Logic to Sample Data",
+    "explanation": "Code only works for a small set of example inputs.",
+    "fix_example": "Generalize logic and test with varied data."
+  },
+  "follow_naming_conventions": {
+    "pattern": "",
+    "title": "Follow Consistent Naming Conventions",
+    "explanation": "Consistent naming makes code easier to read and maintain.",
+    "fix_example": "Use camelCase for variables/methods, PascalCase for classes, UPPER_CASE for constants."
+  },
+  "write_clean_readable_code": {
+    "pattern": "",
+    "title": "Write Clean and Readable Code",
+    "explanation": "Readable code reduces bugs and improves team productivity.",
+    "fix_example": "Use proper indentation, whitespace, and meaningful names."
+  },
+  "use_meaningful_names": {
+    "pattern": "",
+    "title": "Use Meaningful Names",
+    "explanation": "Descriptive names communicate intent clearly.",
+    "fix_example": "Prefer 'totalMarks' over 'tm' or 'x'."
+  },
+  "keep_methods_small": {
+    "pattern": "",
+    "title": "Keep Methods Small and Focused",
+    "explanation": "Small methods are easier to understand and test.",
+    "fix_example": "Extract complex logic into helper methods."
+  },
+  "single_responsibility_principle": {
+    "pattern": "",
+    "title": "Follow Single Responsibility Principle",
+    "explanation": "Each class or method should have one responsibility.",
+    "fix_example": "Split classes/methods that handle multiple concerns."
+  },
+  "avoid_code_duplication": {
+    "pattern": "",
+    "title": "Avoid Code Duplication (DRY)",
+    "explanation": "Duplicate code is harder to maintain.",
+    "fix_example": "Extract common logic into reusable functions."
+  },
+  "prefer_composition_over_inheritance": {
+    "pattern": "",
+    "title": "Prefer Composition Over Inheritance",
+    "explanation": "Composition is more flexible and less tightly coupled than deep inheritance.",
+    "fix_example": "Use fields that reference other objects instead of extending them unnecessarily."
+  },
+  "program_to_interfaces": {
+    "pattern": "",
+    "title": "Program to Interfaces, Not Implementations",
+    "explanation": "Depending on interfaces makes code more flexible.",
+    "fix_example": "Use List instead of ArrayList in method parameters."
+  },
+  "use_access_modifiers_properly": {
+    "pattern": "",
+    "title": "Use Access Modifiers Properly",
+    "explanation": "Proper encapsulation improves safety and flexibility.",
+    "fix_example": "Hide internals with private and expose only necessary APIs as public/protected."
+  },
+  "minimize_mutable_state": {
+    "pattern": "",
+    "title": "Minimize Mutable State",
+    "explanation": "Less mutability reduces bugs and makes reasoning about code easier.",
+    "fix_example": "Use final fields and immutable objects when possible."
+  },
+  "use_constants_instead_of_magic_numbers": {
+    "pattern": "",
+    "title": "Use Constants Instead of Magic Numbers",
+    "explanation": "Named constants make code self-describing.",
+    "fix_example": "Define static final int MAX_RETRIES = 3; and use it."
+  },
+  "handle_exceptions_properly": {
+    "pattern": "",
+    "title": "Handle Exceptions Properly",
+    "explanation": "Good exception handling improves reliability.",
+    "fix_example": "Catch only what you can handle and log or propagate others."
+  },
+  "use_try_with_resources": {
+    "pattern": "",
+    "title": "Use try-with-resources",
+    "explanation": "Auto-closing resources reduces leaks and boilerplate.",
+    "fix_example": "Use try(Resource r = ...) { ... } for AutoCloseable resources."
+  },
+  "validate_external_inputs": {
+    "pattern": "",
+    "title": "Validate All External Inputs",
+    "explanation": "Input validation prevents bugs and security issues.",
+    "fix_example": "Check input size, range, format, and syntax before processing."
+  },
+  "write_unit_tests": {
+    "pattern": "",
+    "title": "Write Unit Tests",
+    "explanation": "Tests give confidence when refactoring and deploying.",
+    "fix_example": "Use JUnit to test methods with various inputs and edge cases."
+  },
+  "test_edge_cases": {
+    "pattern": "",
+    "title": "Test Edge Cases Explicitly",
+    "explanation": "Boundary conditions can reveal hidden bugs.",
+    "fix_example": "Include tests for empty collections, nulls, minima, and maxima."
+  },
+  "use_version_control": {
+    "pattern": "",
+    "title": "Use Version Control Effectively",
+    "explanation": "Version control helps track changes and collaborate.",
+    "fix_example": "Commit frequently with meaningful messages using Git."
+  },
+  "write_self_documenting_code": {
+    "pattern": "",
+    "title": "Write Self-Documenting Code",
+    "explanation": "Clear code reduces the need for comments.",
+    "fix_example": "Use clear names and simple logic so code explains itself."
+  },
+  "follow_code_formatting": {
+    "pattern": "",
+    "title": "Follow Standard Code Formatting",
+    "explanation": "Consistent formatting improves readability.",
+    "fix_example": "Use an auto-formatter or follow a style guide (like Google Java Style)."
+  },
+  "use_logging_instead_of_print": {
+    "pattern": "",
+    "title": "Use Logging Instead of print Statements",
+    "explanation": "Logging is configurable and suitable for production.",
+    "fix_example": "Use a logging framework with levels (INFO, DEBUG, ERROR)."
+  },
+  "avoid_premature_optimization": {
+    "pattern": "",
+    "title": "Avoid Premature Optimization",
+    "explanation": "Optimizing too early complicates code without clear benefits.",
+    "fix_example": "Focus on clarity first, then optimize after measuring performance."
+  },
+  "choose_appropriate_data_structures": {
+    "pattern": "",
+    "title": "Choose Appropriate Data Structures",
+    "explanation": "Choosing the right structure improves performance and clarity.",
+    "fix_example": "Use List for ordered collections, Map for key\u2013value pairs, Set for uniqueness."
+  },
+  "use_immutable_objects": {
+    "pattern": "",
+    "title": "Use Immutable Objects When Possible",
+    "explanation": "Immutability helps thread safety and predictability.",
+    "fix_example": "Avoid setters and use final fields for value types."
+  },
+  "avoid_deep_nesting": {
+    "pattern": "",
+    "title": "Avoid Deep Nesting",
+    "explanation": "Deeply nested code is hard to read and maintain.",
+    "fix_example": "Use early returns and helper methods to flatten control flow."
+  },
+  "prefer_early_returns": {
+    "pattern": "",
+    "title": "Prefer Early Returns",
+    "explanation": "Early returns reduce nested ifs and improve clarity.",
+    "fix_example": "Return early when conditions are not met instead of adding nested blocks."
+  },
+  "encapsulate_object_state": {
+    "pattern": "",
+    "title": "Encapsulate Object State",
+    "explanation": "Proper encapsulation protects invariants and internal logic.",
+    "fix_example": "Make fields private and provide controlled accessors."
+  },
+  "make_dependencies_explicit": {
+    "pattern": "",
+    "title": "Make Dependencies Explicit",
+    "explanation": "Hidden dependencies make code harder to understand and test.",
+    "fix_example": "Inject dependencies via constructors or setters."
+  },
+  "use_dependency_injection": {
+    "pattern": "",
+    "title": "Use Dependency Injection",
+    "explanation": "DI frameworks simplify management of object dependencies.",
+    "fix_example": "Use constructor injection or DI containers like Spring where appropriate."
+  },
+  "avoid_static_abuse": {
+    "pattern": "",
+    "title": "Avoid Static Abuse",
+    "explanation": "Overusing static methods and fields reduces flexibility.",
+    "fix_example": "Prefer instance-based design and proper object lifecycles."
+  },
+  "design_for_testability": {
+    "pattern": "",
+    "title": "Design for Testability",
+    "explanation": "Testable design makes it easier to maintain quality.",
+    "fix_example": "Separate logic from I/O and use interfaces to mock dependencies."
+  },
+  "write_modular_code": {
+    "pattern": "",
+    "title": "Write Modular Code",
+    "explanation": "Modularity enables reuse and easier understanding.",
+    "fix_example": "Divide the system into cohesive modules or packages."
+  },
+  "follow_layered_architecture": {
+    "pattern": "",
+    "title": "Follow Layered Architecture",
+    "explanation": "Separating layers (UI, business, data) improves structure.",
+    "fix_example": "Keep controllers, services, and repositories separate."
+  },
+  "separate_business_logic_from_ui": {
+    "pattern": "",
+    "title": "Separate Business Logic from UI",
+    "explanation": "Mixing UI and logic makes code hard to modify.",
+    "fix_example": "Put business rules into service classes or domain models."
+  },
+  "handle_concurrency_explicitly": {
+    "pattern": "",
+    "title": "Handle Concurrency Explicitly",
+    "explanation": "Explicit concurrency handling avoids subtle race conditions.",
+    "fix_example": "Use synchronization, locks, or java.util.concurrent tools intentionally."
+  },
+  "use_thread_safe_constructs": {
+    "pattern": "",
+    "title": "Use Thread-Safe Constructs",
+    "explanation": "Thread-safe constructs help avoid concurrency bugs.",
+    "fix_example": "Use ConcurrentHashMap, AtomicInteger, and thread-safe patterns where needed."
+  },
+  "document_public_apis": {
+    "pattern": "",
+    "title": "Document Public APIs",
+    "explanation": "API documentation helps users understand contracts and usage.",
+    "fix_example": "Use JavaDoc to describe parameters, return values, and behavior."
+  },
+  "keep_methods_side_effect_minimal": {
+    "pattern": "",
+    "title": "Keep Methods Side-Effect Minimal",
+    "explanation": "Functions with fewer side-effects are easier to reason about.",
+    "fix_example": "Limit state changes and avoid hidden mutations."
+  },
+  "clean_up_unused_code": {
+    "pattern": "",
+    "title": "Clean Up Unused Code",
+    "explanation": "Dead code increases noise and confusion.",
+    "fix_example": "Delete unused methods, fields, and classes."
+  },
+  "review_code_regularly": {
+    "pattern": "",
+    "title": "Review Code Regularly",
+    "explanation": "Code reviews catch issues early and share knowledge.",
+    "fix_example": "Use peer reviews or pull requests as part of the workflow."
+  },
+  "refactor_continuously": {
+    "pattern": "",
+    "title": "Refactor Continuously",
+    "explanation": "Continuous refactoring keeps the codebase healthy.",
+    "fix_example": "Regularly improve design without changing behavior."
+  }
+}

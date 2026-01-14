@@ -1,0 +1,35 @@
+question,answer
+What is a class in Java?,"A class is a blueprint for creating objects, containing fields (variables) and methods (functions)."
+What is an object in Java?,An object is an instance of a class with its own state and behavior.
+Write a simple class and create object,"class Car{ String model; int year; Car(String m, int y){ model=m; year=y; } }
+Car c = new Car(""Tesla"",2025); System.out.println(c.model + "" "" + c.year);"
+What is a constructor in Java?,A constructor is a special method used to initialize objects. It has no return type and same name as class.
+Constructor example in Java,"class Person{ String name; Person(String n){ name=n; } } Person p = new Person(""Suraj"");"
+What is inheritance in Java?,Inheritance allows a class to acquire properties and methods of another class using 'extends' keyword.
+Example of inheritance,"class Animal{ void eat(){System.out.println(""eat"");} } class Dog extends Animal{ void bark(){System.out.println(""bark"");} } Dog d = new Dog(); d.eat(); d.bark();"
+What is polymorphism in Java?,Polymorphism allows objects to take many forms. It includes compile-time (method overloading) and runtime (method overriding).
+Method overloading example,"class Calc{ int add(int a,int b){return a+b;} double add(double a,double b){return a+b;} }"
+Method overriding example,"class Animal{ void sound(){System.out.println(""Animal"");} } class Dog extends Animal{ void sound(){System.out.println(""Bark"");} }"
+What is encapsulation in Java?,Encapsulation is wrapping data (variables) and code (methods) together. Use private fields + public getters/setters.
+Encapsulation example,class Person{ private String name; public String getName(){return name;} public void setName(String n){name=n;} }
+What is abstraction in Java?,Abstraction hides implementation details using abstract classes or interfaces.
+Abstract class example,"abstract class Shape{ abstract void draw(); } class Circle extends Shape{ void draw(){System.out.println(""Circle"");} }"
+What is interface in Java?,An interface is a contract that defines abstract methods. Classes implement interfaces using 'implements' keyword.
+Interface example,"interface Animal{ void sound(); } class Dog implements Animal{ public void sound(){System.out.println(""Bark"");} }"
+What is inner class in Java?,A class defined inside another class. Can access outer class members.
+Inner class example,class Outer{ int x=10; class Inner{ void show(){System.out.println(x);} } } Outer o = new Outer(); Outer.Inner i = o.new Inner(); i.show();
+What is ArrayList in Java?,ArrayList is a resizable array implementation of List interface.
+ArrayList example,"import java.util.*;
+ArrayList<String> list = new ArrayList<>(); list.add(""A""); list.add(""B""); for(String s:list) System.out.println(s);"
+What is HashMap in Java?,HashMap stores key-value pairs. Keys are unique. O(1) access on average.
+HashMap example,"import java.util.*;
+HashMap<String,Integer> map = new HashMap<>(); map.put(""A"",1); map.put(""B"",2); for(String k:map.keySet()) System.out.println(k+""=""+map.get(k));"
+What is LinkedList in Java?,LinkedList is a doubly-linked list implementation of List and Deque interfaces.
+LinkedList example,"import java.util.*;
+LinkedList<Integer> ll = new LinkedList<>(); ll.add(1); ll.add(2); ll.removeFirst(); System.out.println(ll);"
+Iterator example for ArrayList,Iterator<String> it = list.iterator(); while(it.hasNext()){ System.out.println(it.next()); }
+What are generics in Java?,"Generics allow type-safe operations on collections, e.g., ArrayList<String> ensures only Strings."
+Generic class example,class Box<T>{ T item; void set(T i){item=i;} T get(){return item;} } Box<Integer> b = new Box<>(); b.set(10); System.out.println(b.get());
+Default method in interface (Java 8),"interface A{ default void show(){System.out.println(""default"");} } class B implements A{} new B().show();"
+Functional interface example,"@FunctionalInterface interface Func{ void apply(); } Func f = ()->System.out.println(""Hi""); f.apply();"
+java oop collections summary,"OOP concepts: class, object, inheritance, polymorphism, encapsulation, abstraction, interface. Collections: ArrayList, LinkedList, HashMap, Generics, Iterators."

@@ -1,0 +1,23 @@
+
+<!doctype html>
+<html>
+<head><title>Java Chatbot</title></head>
+<body>
+  <h1>Java Chatbot</h1>
+  <textarea id="q" rows=10 cols=80 placeholder="Paste Java code or ask a Java question"></textarea><br/>
+  <button onclick="send()">Send</button>
+  <pre id="out"></pre>
+  <script>
+    async function send(){
+      const txt = document.getElementById('q').value;
+      const res = await fetch('/api/query', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({text: txt})
+      });
+      const data = await res.json();
+      document.getElementById('out').innerText = JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>

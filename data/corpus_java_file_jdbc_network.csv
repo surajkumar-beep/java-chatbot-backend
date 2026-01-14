@@ -1,0 +1,20 @@
+question,answer
+What is file handling in Java?,File handling allows Java programs to read and write data to files using java.io and java.nio packages.
+Which package is used for file handling?,java.io and java.nio packages are used for file handling.
+How to create a file in Java?,"File f = new File(""demo.txt""); f.createNewFile();"
+How to check if file exists?,"File f = new File(""data.txt""); if(f.exists()) System.out.println(""Exists"");"
+How to delete a file?,"File f = new File(""old.txt""); f.delete();"
+How to write to a file using FileWriter?,"FileWriter fw = new FileWriter(""out.txt""); fw.write(""Hello""); fw.close();"
+How to read from file using FileReader?,"FileReader fr = new FileReader(""data.txt""); int ch; while((ch=fr.read())!=-1) System.out.print((char)ch); fr.close();"
+BufferedReader example,"BufferedReader br = new BufferedReader(new FileReader(""data.txt"")); String line; while((line=br.readLine())!=null) System.out.println(line); br.close();"
+BufferedWriter example,"BufferedWriter bw = new BufferedWriter(new FileWriter(""out.txt"")); bw.write(""Hi""); bw.newLine(); bw.close();"
+Read file using Scanner,"Scanner sc = new Scanner(new File(""data.txt"")); while(sc.hasNextLine()) System.out.println(sc.nextLine()); sc.close();"
+What is JDBC?,JDBC (Java Database Connectivity) is an API that allows Java programs to connect and execute queries on databases.
+Steps to connect JDBC to database,"Load driver, create connection, create statement, execute query, close connection."
+JDBC connection example,"Connection con = DriverManager.getConnection(""jdbc:mysql://localhost:3306/db"",""user"",""pass"");"
+PreparedStatement example,"PreparedStatement ps = con.prepareStatement(""INSERT INTO emp VALUES (?,?)""); ps.setInt(1,1); ps.setString(2,""John""); ps.executeUpdate();"
+What is networking in Java?,Java networking allows communication between computers using the java.net package.
+Socket example,"Socket s = new Socket(""localhost"", 6666);"
+ServerSocket example,ServerSocket ss = new ServerSocket(6666); Socket s = ss.accept();
+What is HttpURLConnection?,HttpURLConnection is used to send HTTP requests and receive responses.
+TCP vs UDP in Java,"TCP is connection-oriented using Socket/ServerSocket, UDP is connectionless using DatagramSocket."

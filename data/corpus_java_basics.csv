@@ -1,0 +1,106 @@
+question,answer
+hi,Hello! 👋 I’m your Java assistant. How can I help you today?
+hello,Hey there! 😊 Ask me any Java question or share your code.
+how are you,I’m doing great! Ready to help you with Java programming questions.
+What is Java?,"Java is a high-level, class-based, object-oriented programming language developed by James Gosling at Sun Microsystems in 1995."
+Who developed Java?,Java was developed by James Gosling at Sun Microsystems (now Oracle).
+What is JVM?,JVM (Java Virtual Machine) runs Java bytecode on different platforms.
+What is JDK and JRE?,JDK = Java Development Kit (compiler + tools). JRE = Java Runtime Environment (JVM + libraries).
+How Java code compiles and runs?,javac compiles .java to .class (bytecode). java command runs the bytecode on the JVM.
+Write a Java program to print Hello World,"public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println(""Hello World"");
+    }
+}"
+WAP (write a program) to print Hello World,"See: public class HelloWorld { public static void main(String[] args) { System.out.println(""Hello World""); } }"
+What are primitive data types in Java?,"byte, short, int, long, float, double, char, boolean."
+Declare variables example in Java,"int a = 10;
+double pi = 3.14;
+char c = 'A';
+boolean ok = true;"
+Type casting in Java,"int x = (int) 3.14; // explicit cast
+double y = x; // implicit cast"
+How to read input using Scanner,"import java.util.Scanner;
+Scanner sc = new Scanner(System.in);
+int n = sc.nextInt();
+String s = sc.nextLine();
+sc.close();"
+How to read input using BufferedReader,"import java.io.*;
+BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+String s = br.readLine();
+int n = Integer.parseInt(br.readLine());"
+What are arithmetic operators in Java?,+ - * / % (modulus)
+What are relational operators in Java?,"==, !=, >, <, >=, <= (used for comparisons)"
+Ternary operator example,int max = (a > b) ? a : b;
+If-else example in Java,"if (x > 0) {
+    System.out.println(""positive"");
+} else {
+    System.out.println(""non-positive"");
+}"
+Switch-case example in Java,"switch (day) {
+  case 1: System.out.println(""Mon""); break;
+  case 2: System.out.println(""Tue""); break;
+  default: System.out.println(""Other"");
+}"
+For loop example in Java,"for (int i = 0; i < n; i++) {
+    System.out.println(i);
+}"
+While loop example in Java,"int i = 0;
+while (i < n) {
+    System.out.println(i);
+    i++;
+}"
+Do-while loop example in Java,"int i = 0;
+do {
+   System.out.println(i);
+   i++;
+} while (i < n);"
+WAP to find factorial of a number in Java (iterative),"import java.util.Scanner;
+public class Fact {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    long f = 1;
+    for (int i = 2; i <= n; i++) f *= i;
+    System.out.println(f);
+    sc.close();
+  }
+}"
+WAP to find factorial (recursive),"public class FactRec {
+  static long fact(int n){ return n<=1?1:n*fact(n-1); }
+  public static void main(String[] args){ System.out.println(fact(5)); }
+}"
+WAP to print Fibonacci series (iterative),"int a=0,b=1;
+for(int i=0;i<n;i++){ System.out.println(a); int t=a+b; a=b; b=t; }"
+WAP to check if a number is prime,boolean isPrime(int n){ if(n<=1) return false; for(int i=2;i*i<=n;i++) if(n%i==0) return false; return true; }
+WAP to reverse a number in Java,int rev=0; while(n>0){ rev = rev*10 + n%10; n/=10; } System.out.println(rev);
+Declare and initialize array in Java,"int[] a = new int[]{1,2,3};
+int[] b = {4,5,6};"
+Find max element in array,int max = a[0]; for(int i=1;i<a.length;i++) if(a[i]>max) max=a[i]; System.out.println(max);
+WAP to reverse an array,for(int i=0;i<a.length/2;i++){ int t=a[i]; a[i]=a[a.length-1-i]; a[a.length-1-i]=t; }
+String reverse in Java,StringBuilder sb = new StringBuilder(s); sb.reverse().toString();
+Check palindrome string,"String rev = new StringBuilder(s).reverse().toString(); if(s.equals(rev)) System.out.println(""palindrome"");"
+Bubble sort example in Java,for(int i=0;i<n-1;i++) for(int j=0;j<n-1-i;j++) if(a[j]>a[j+1]){ int t=a[j]; a[j]=a[j+1]; a[j+1]=t; }
+Binary search in sorted array (iterative),"int l=0,r=n-1; while(l<=r){ int mid=(l+r)/2; if(a[mid]==key) return mid; else if(a[mid]<key) l=mid+1; else r=mid-1; } return -1;"
+Try-catch example in Java,"try{ int x = 5/0; } catch(ArithmeticException e){ System.out.println(e.getMessage()); } finally{ System.out.println(""clean up""); }"
+Custom exception example in Java,"class MyEx extends Exception{ MyEx(String m){ super(m);} }
+// throw new MyEx(""error"");"
+Write text to file in Java,"import java.io.*;
+try(FileWriter fw = new FileWriter(""out.txt"")) { fw.write(""Hello""); } catch(IOException e){ e.printStackTrace(); }"
+Read text file line by line in Java,"import java.nio.file.*;
+for(String line: Files.readAllLines(Paths.get(""in.txt""))) System.out.println(line);"
+String vs StringBuilder vs StringBuffer,String is immutable. StringBuilder is mutable and not thread-safe (faster). StringBuffer is thread-safe (synchronized).
+How to convert String to int and vice versa,"int x = Integer.parseInt(s);
+String s = String.valueOf(x);"
+Create a simple class and object example,"class Person{ String name; Person(String n){ name=n; } }
+Person p = new Person(""Suraj""); System.out.println(p.name);"
+GCD of two numbers (recursive),"int gcd(int a,int b){ return b==0?a:gcd(b,a%b); }"
+Swap two numbers without temp variable,a = a + b; b = a - b; a = a - b; // for integers (beware overflow).
+Check even or odd,"if(n%2==0) System.out.println(""even""); else System.out.println(""odd"");"
+Lambda expression example Java 8,"List<Integer> nums = Arrays.asList(1,2,3);
+nums.forEach(n -> System.out.println(n));"
+Stream filter map example Java 8,List<String> names = ...; names.stream().filter(s->s.length()>3).map(String::toUpperCase).forEach(System.out::println);
+Try-with-resources example,"try (BufferedReader br = new BufferedReader(new FileReader(""in.txt""))) { String s = br.readLine(); } catch(IOException e) { e.printStackTrace(); }"
+Serialization example in Java,"class Person implements Serializable { String name; }
+ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(""p.obj"")); oos.writeObject(person); oos.close();"
+java basics summary,"Java basics include syntax, data types, control flow, OOP fundamentals, exceptions, collections, and I/O. Practice small programs."

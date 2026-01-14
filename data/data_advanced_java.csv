@@ -1,0 +1,51 @@
+question,answer
+What is a Design Pattern?,A design pattern is a general reusable solution to a commonly occurring problem in software design.
+Explain Singleton Pattern.,Singleton ensures only one instance of a class exists throughout the application.
+Explain Factory Pattern.,Factory pattern creates objects without exposing the creation logic to the client.
+What is Builder Pattern?,Builder pattern constructs complex objects step by step.
+Explain Prototype Pattern.,Prototype pattern creates new objects by cloning existing ones.
+What is Adapter Pattern?,Adapter converts the interface of a class into another interface clients expect.
+What is Observer Pattern?,Observer allows objects to subscribe and get notified when another object changes state.
+What is Strategy Pattern?,Strategy allows selecting an algorithm’s behavior at runtime.
+What is Decorator Pattern?,Decorator adds behavior to objects dynamically without altering their structure.
+What is Command Pattern?,"Command encapsulates a request as an object, allowing parameterization of clients."
+What is Proxy Pattern?,Proxy provides a surrogate object that controls access to another object.
+Explain MVC Pattern.,"MVC separates an application into Model, View, and Controller for better organization."
+What is DAO Pattern?,"DAO abstracts database interactions, allowing data access logic to be separate from business logic."
+Explain DTO Pattern.,DTO is used to transfer data between layers without exposing entities directly.
+What is Template Method Pattern?,Template Method defines a skeleton of an algorithm and lets subclasses fill in specific steps.
+What are Lambda Expressions?,Lambdas allow defining anonymous methods with concise syntax.
+What is Functional Interface?,A functional interface contains exactly one abstract method.
+What is Stream API?,"Stream API provides a functional way to process collections using map, filter, and reduce."
+Explain Optional class.,Optional helps avoid null pointer exceptions by providing a container object.
+What are default methods in interfaces?,Default methods allow adding new methods to interfaces without breaking implementations.
+Explain method references.,Method references provide shorthand for calling methods using '::' syntax.
+What is map() in streams?,map() transforms each element of a stream and returns a new stream.
+What is flatMap() in streams?,flatMap() flattens nested collections in a stream.
+What are terminal operations in streams?,"Terminal operations include collect(), count(), forEach(), reduce(), etc."
+Explain CompletableFuture.,CompletableFuture allows asynchronous programming with non-blocking calls.
+Explain Optional.orElse().,orElse() returns a default value if Optional is empty.
+What is JUnit?,JUnit is a Java testing framework for unit testing.
+What is @Test annotation?,@Test marks a method as a test case in JUnit.
+What is Mockito?,Mockito is a mocking framework used to simulate dependencies in tests.
+Explain assertEquals() in JUnit.,assertEquals() checks whether two values are equal in a test.
+What is TestNG?,TestNG is a testing framework that provides advanced features like dependency testing.
+What is Maven?,Maven is a build automation tool that manages project dependencies and lifecycle.
+What is Gradle?,Gradle is a build tool that uses Groovy/Kotlin DSL for flexible build scripts.
+What is Jenkins?,"Jenkins automates builds, testing, and deployment in CI/CD pipelines."
+What is Git?,Git is a distributed version control system for tracking code changes.
+What is GitHub?,GitHub is a cloud-based platform for hosting and collaborating on Git repositories.
+Explain version control.,Version control tracks changes and allows multiple developers to work on code simultaneously.
+What is reflection in Java?,Reflection allows inspection and modification of classes and methods at runtime.
+What is annotation processing?,Annotation processing generates code or performs validation at compile time.
+What is garbage collection?,Garbage collection automatically removes unused objects from memory.
+What is volatile keyword?,volatile ensures variable visibility across threads.
+What is synchronization?,Synchronization ensures mutual exclusion in multithreaded environments.
+What is ExecutorService?,ExecutorService manages and executes threads asynchronously.
+What is ForkJoinPool?,ForkJoinPool executes tasks in parallel using work-stealing algorithm.
+What is parallelStream()?,parallelStream() processes stream elements in parallel for faster performance.
+What is collect() in streams?,collect() gathers stream results into a collection or value.
+What is CompletableFuture.thenApply()?,thenApply() transforms the result of a CompletableFuture when it completes.
+What is the difference between Collection and Stream?,Collection stores data; Stream processes data in a functional way.
+Explain Predicate interface.,Predicate is a functional interface used to test a condition and return boolean.
+Explain Supplier interface.,Supplier is a functional interface that returns a value without taking any input.

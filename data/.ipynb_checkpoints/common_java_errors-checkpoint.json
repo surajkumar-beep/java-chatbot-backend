@@ -1,0 +1,278 @@
+{
+  "missing_semicolon": {
+    "pattern": "';' expected",
+    "title": "Missing Semicolon",
+    "explanation": "Every Java statement must end with a semicolon. The compiler throws this when it encounters a missing one.",
+    "fix_example": "Add a semicolon: System.out.println('Hello');"
+  },
+  "unclosed_string": {
+    "pattern": "unclosed string literal",
+    "title": "Unclosed String Literal",
+    "explanation": "You forgot to close a string with a double quote.",
+    "fix_example": "Use matching quotes: System.out.println('Hello World');"
+  },
+  "illegal_start_of_expr": {
+    "pattern": "illegal start of expression",
+    "title": "Illegal Start of Expression",
+    "explanation": "Occurs when a statement is misplaced or a keyword is used incorrectly.",
+    "fix_example": "Ensure proper syntax \u2014 e.g., method declarations must be inside a class."
+  },
+  "cannot_find_symbol": {
+    "pattern": "cannot find symbol",
+    "title": "Cannot Find Symbol",
+    "explanation": "The compiler doesn't recognize a variable, method, or class \u2014 likely undeclared or misspelled.",
+    "fix_example": "Check spelling and declaration: int count = 0; System.out.println(count);"
+  },
+  "class_name_mismatch": {
+    "pattern": "class .* is public, should be declared in a file named",
+    "title": "Class Name Mismatch",
+    "explanation": "The public class name must match the filename exactly.",
+    "fix_example": "Rename the file to match the class name or remove 'public'."
+  },
+  "incompatible_types": {
+    "pattern": "incompatible types",
+    "title": "Incompatible Types",
+    "explanation": "A variable assignment involves incompatible data types.",
+    "fix_example": "Use casting or change data type. Example: int x = (int) 5.5;"
+  },
+  "missing_return": {
+    "pattern": "missing return statement",
+    "title": "Missing Return Statement",
+    "explanation": "A method declared with a non-void return type must return a value in all paths.",
+    "fix_example": "Add a return statement at the end of the method."
+  },
+  "cannot_find_main": {
+    "pattern": "(NoSuchMethodError: main|Could not find or load main class)",
+    "title": "Missing or Invalid Main Method",
+    "explanation": "No valid entry point found. Java requires a 'public static void main(String[] args)' method.",
+    "fix_example": "Add: public static void main(String[] args) { }"
+  },
+  "null_pointer": {
+    "pattern": "NullPointerException",
+    "title": "Null Pointer Exception",
+    "explanation": "Attempted to use an object reference that is null.",
+    "fix_example": "Check for null before using the object: if(obj != null) obj.method();"
+  },
+  "array_index_out_of_bounds": {
+    "pattern": "ArrayIndexOutOfBoundsException",
+    "title": "Array Index Out of Bounds",
+    "explanation": "Index exceeds array size.",
+    "fix_example": "Ensure you access within [0, array.length-1]."
+  },
+  "number_format": {
+    "pattern": "NumberFormatException",
+    "title": "Number Format Exception",
+    "explanation": "Attempted to convert a non-numeric string to a number.",
+    "fix_example": "Validate input: Integer.parseInt('123') not Integer.parseInt('abc')."
+  },
+  "arithmetic_exception": {
+    "pattern": "ArithmeticException",
+    "title": "Arithmetic Exception (Divide by Zero)",
+    "explanation": "You attempted to divide by zero or an invalid arithmetic operation occurred.",
+    "fix_example": "Check denominator before dividing."
+  },
+  "stack_overflow": {
+    "pattern": "StackOverflowError",
+    "title": "Stack Overflow Error",
+    "explanation": "Infinite recursion or deep method calls filled the call stack.",
+    "fix_example": "Ensure recursive calls have a valid base condition."
+  },
+  "class_not_found": {
+    "pattern": "ClassNotFoundException",
+    "title": "Class Not Found Exception",
+    "explanation": "The JVM couldn't find a specified class in the classpath.",
+    "fix_example": "Check import paths and ensure the required JARs are in the classpath."
+  },
+  "illegal_argument": {
+    "pattern": "IllegalArgumentException",
+    "title": "Illegal Argument Exception",
+    "explanation": "Method received an inappropriate or invalid argument.",
+    "fix_example": "Validate arguments before passing. Check method documentation for valid values."
+  },
+  "illegal_state": {
+    "pattern": "IllegalStateException",
+    "title": "Illegal State Exception",
+    "explanation": "Method called at inappropriate time or object is in invalid state.",
+    "fix_example": "Ensure object is in correct state before method call."
+  },
+  "class_cast": {
+    "pattern": "ClassCastException",
+    "title": "Class Cast Exception",
+    "explanation": "Attempted to cast object to incompatible type.",
+    "fix_example": "Use instanceof before casting: if(obj instanceof String) { String s = (String)obj; }"
+  },
+  "concurrent_modification": {
+    "pattern": "ConcurrentModificationException",
+    "title": "Concurrent Modification Exception",
+    "explanation": "Collection modified while iterating over it.",
+    "fix_example": "Use Iterator.remove() or CopyOnWriteArrayList for concurrent modifications."
+  },
+  "io_exception": {
+    "pattern": "IOException",
+    "title": "IO Exception",
+    "explanation": "Input/Output operation failed.",
+    "fix_example": "Use try-catch or try-with-resources: try(FileReader fr = new FileReader(file)) { }"
+  },
+  "file_not_found": {
+    "pattern": "FileNotFoundException",
+    "title": "File Not Found Exception",
+    "explanation": "File specified in path doesn't exist.",
+    "fix_example": "Verify file path and existence: if(new File(path).exists()) { }"
+  },
+  "sql_exception": {
+    "pattern": "SQLException",
+    "title": "SQL Exception",
+    "explanation": "Database operation failed.",
+    "fix_example": "Check SQL syntax, connection, and handle exceptions properly."
+  },
+  "no_such_element": {
+    "pattern": "NoSuchElementException",
+    "title": "No Such Element Exception",
+    "explanation": "Attempted to access element that doesn't exist (Iterator, Scanner, etc).",
+    "fix_example": "Check hasNext() before next(): if(scanner.hasNext()) scanner.next();"
+  },
+  "unsupported_operation": {
+    "pattern": "UnsupportedOperationException",
+    "title": "Unsupported Operation Exception",
+    "explanation": "Operation is not supported by this implementation.",
+    "fix_example": "Use mutable collection or different data structure."
+  },
+  "out_of_memory": {
+    "pattern": "OutOfMemoryError",
+    "title": "Out of Memory Error",
+    "explanation": "JVM ran out of heap memory.",
+    "fix_example": "Increase heap size: java -Xmx512m, or optimize memory usage."
+  },
+  "negative_array_size": {
+    "pattern": "NegativeArraySizeException",
+    "title": "Negative Array Size Exception",
+    "explanation": "Attempted to create array with negative size.",
+    "fix_example": "Ensure array size is positive: int[] arr = new int[Math.max(0, size)];"
+  },
+  "string_index_out_of_bounds": {
+    "pattern": "StringIndexOutOfBoundsException",
+    "title": "String Index Out of Bounds",
+    "explanation": "Accessing string character at invalid index.",
+    "fix_example": "Check string length: if(i < str.length()) char c = str.charAt(i);"
+  },
+  "interrupted_exception": {
+    "pattern": "InterruptedException",
+    "title": "Interrupted Exception",
+    "explanation": "Thread was interrupted while waiting, sleeping, or occupied.",
+    "fix_example": "Handle properly: catch(InterruptedException e) { Thread.currentThread().interrupt(); }"
+  },
+  "deadlock": {
+    "pattern": "(deadlock|Deadlock)",
+    "title": "Deadlock Detected",
+    "explanation": "Two or more threads are blocked forever, waiting for each other.",
+    "fix_example": "Acquire locks in consistent order, use timeout mechanisms."
+  },
+  "assertion_error": {
+    "pattern": "AssertionError",
+    "title": "Assertion Error",
+    "explanation": "Assertion failed during execution.",
+    "fix_example": "Review assertion condition or disable assertions: java -da"
+  },
+  "generic_error": {
+    "pattern": "Error",
+    "title": "Generic Error",
+    "explanation": "Serious error occurred in JVM.",
+    "fix_example": "Check stack trace for specific error type and cause."
+  },
+  "method_not_found": {
+    "pattern": "NoSuchMethodError",
+    "title": "No Such Method Error",
+    "explanation": "Method exists at compile time but not at runtime (version mismatch).",
+    "fix_example": "Ensure correct library versions, rebuild project."
+  },
+  "clone_not_supported": {
+    "pattern": "CloneNotSupportedException",
+    "title": "Clone Not Supported Exception",
+    "explanation": "Class doesn't implement Cloneable interface.",
+    "fix_example": "Implement Cloneable: class MyClass implements Cloneable { }"
+  },
+  "parse_exception": {
+    "pattern": "ParseException",
+    "title": "Parse Exception",
+    "explanation": "Error parsing string to date or other format.",
+    "fix_example": "Use correct format pattern: SimpleDateFormat sdf = new SimpleDateFormat(\"yyyy-MM-dd\");"
+  },
+  "malformed_url": {
+    "pattern": "MalformedURLException",
+    "title": "Malformed URL Exception",
+    "explanation": "URL string is invalid or malformed.",
+    "fix_example": "Verify URL format: new URL(\"https://example.com\");"
+  },
+  "socket_exception": {
+    "pattern": "SocketException",
+    "title": "Socket Exception",
+    "explanation": "Network socket error occurred.",
+    "fix_example": "Check network connectivity and socket configuration."
+  },
+  "bind_exception": {
+    "pattern": "BindException",
+    "title": "Bind Exception",
+    "explanation": "Port already in use or cannot bind to address.",
+    "fix_example": "Use different port or close existing connection on that port."
+  },
+  "connect_exception": {
+    "pattern": "ConnectException",
+    "title": "Connect Exception",
+    "explanation": "Connection refused or host unreachable.",
+    "fix_example": "Verify server is running and firewall settings."
+  },
+  "variable_shadowing": {
+    "pattern": "",
+    "title": "Variable Shadowing",
+    "explanation": "Local variable hides instance variable with same name.",
+    "fix_example": "Use 'this.variableName' to refer to instance variable."
+  },
+  "resource_leak": {
+    "pattern": "",
+    "title": "Resource Leak",
+    "explanation": "Streams or files were opened but not closed.",
+    "fix_example": "Use try-with-resources: try(FileInputStream f = new FileInputStream('file.txt')) { }"
+  },
+  "wrong_equals_usage": {
+    "pattern": "",
+    "title": "Wrong equals() vs == Usage",
+    "explanation": "In Java, '==' compares references while equals() compares content.",
+    "fix_example": "Use .equals() for string comparison."
+  },
+  "infinite_loop": {
+    "pattern": "",
+    "title": "Infinite Loop",
+    "explanation": "Loop condition never becomes false.",
+    "fix_example": "Ensure the loop variable changes inside the loop."
+  },
+  "naming_conventions": {
+    "pattern": "",
+    "title": "Naming Conventions",
+    "explanation": "Use camelCase for variables/methods, PascalCase for classes, and UPPER_CASE for constants.",
+    "fix_example": "Example: int totalMarks; class StudentDetails; final int MAX=100;"
+  },
+  "exception_handling_best": {
+    "pattern": "",
+    "title": "Exception Handling Best Practice",
+    "explanation": "Catch specific exceptions instead of generic Exception to improve clarity.",
+    "fix_example": "Use multiple catch blocks or custom exceptions."
+  },
+  "code_readability": {
+    "pattern": "",
+    "title": "Code Readability",
+    "explanation": "Use indentation and meaningful names to improve readability.",
+    "fix_example": "Always indent properly and document complex logic with comments."
+  },
+  "learn_java_websites": {
+    "pattern": "(learn|study|practice).*(java|spring|hibernate)",
+    "title": "Online Learning Resources",
+    "explanation": "Here are some reliable websites to learn Java:",
+    "fix_example": "1. https://www.w3schools.com/java/\n2. https://www.javatpoint.com/\n3. https://www.geeksforgeeks.org/java/\n4. https://www.udemy.com/course/java-the-complete-java-developer-course/"
+  },
+  "web_component": {
+    "pattern": "(deploy|web component|integrate).*(chatbot|assistant)",
+    "title": "Deploying Chatbot as Web Component",
+    "explanation": "To deploy your chatbot as a web component, wrap it using HTML/JS and connect the Python backend via Flask or FastAPI.",
+    "fix_example": "Frontend: Create chatbot.js using custom HTML element.\nBackend: Deploy Flask app on Render/Heroku and use fetch() to send/receive messages."
+  }
+}

@@ -1,0 +1,47 @@
+question,answer
+Declare an integer array in Java,"int[] a = new int[5]; // size 5
+int[] b = {1,2,3,4,5}; // initialization"
+Access elements of an array,"int x = a[0]; // first element
+for(int i=0;i<a.length;i++) System.out.println(a[i]);"
+Find max element in array,int max = a[0]; for(int i=1;i<a.length;i++) if(a[i]>max) max=a[i]; System.out.println(max);
+Find min element in array,int min = a[0]; for(int i=1;i<a.length;i++) if(a[i]<min) min=a[i]; System.out.println(min);
+Sum of all elements in array,int sum=0; for(int i:a) sum+=i; System.out.println(sum);
+Reverse an array in Java,for(int i=0;i<a.length/2;i++){ int t=a[i]; a[i]=a[a.length-1-i]; a[a.length-1-i]=t; }
+Check if array contains a number,boolean found=false; for(int i:a) if(i==key) {found=true; break;}
+Linear search in array,"for(int i=0;i<a.length;i++) if(a[i]==key) System.out.println(""Found at ""+i);"
+Binary search in sorted array,"int l=0,r=a.length-1; while(l<=r){ int mid=(l+r)/2; if(a[mid]==key){System.out.println(mid); break;} else if(a[mid]<key) l=mid+1; else r=mid-1; }"
+Bubble sort in Java,for(int i=0;i<n-1;i++) for(int j=0;j<n-1-i;j++) if(a[j]>a[j+1]){ int t=a[j]; a[j]=a[j+1]; a[j+1]=t; }
+Selection sort in Java,for(int i=0;i<n-1;i++){ int min=i; for(int j=i+1;j<n;j++) if(a[j]<a[min]) min=j; int t=a[i]; a[i]=a[min]; a[min]=t; }
+Insertion sort in Java,for(int i=1;i<n;i++){ int key=a[i]; int j=i-1; while(j>=0 && a[j]>key){ a[j+1]=a[j]; j--; } a[j+1]=key; }
+Find second largest element in array,"int first=Integer.MIN_VALUE, second=Integer.MIN_VALUE; for(int i:a){ if(i>first){ second=first; first=i;} else if(i>second && i!=first) second=i; }"
+Remove duplicates from array,Set<Integer> s = new HashSet<>(); for(int i:a) s.add(i); System.out.println(s);
+Find subarray with given sum,"int sum=0,start=0; for(int i=0;i<a.length;i++){ sum+=a[i]; while(sum>target){ sum-=a[start]; start++; } if(sum==target) System.out.println(start+"" to ""+i); }"
+Rotate array by k positions,int n=a.length; int[] temp = new int[n]; for(int i=0;i<n;i++) temp[(i+k)%n]=a[i]; a=temp;
+Find majority element in array,"int count=0, candidate=0; for(int i:a){ if(count==0) candidate=i; if(i==candidate) count++; else count--; } System.out.println(candidate);"
+Declare a string in Java,"String s = ""Hello"";"
+String length in Java,int len = s.length();
+Concatenate strings,"String s2 = s + "" World"";"
+Compare strings,"s.equals(""Hello""); // content
+s==""Hello""; // reference"
+String substring example,"String sub = s.substring(1,4); // index 1 to 3"
+Convert string to char array,char[] c = s.toCharArray();
+Reverse a string,String rev = new StringBuilder(s).reverse().toString();
+Check palindrome string,"String rev = new StringBuilder(s).reverse().toString(); if(s.equals(rev)) System.out.println(""Palindrome"");"
+Check anagram of two strings,"char[] c1=s1.toCharArray(); char[] c2=s2.toCharArray(); Arrays.sort(c1); Arrays.sort(c2); if(Arrays.equals(c1,c2)) System.out.println(""Anagram"");"
+Count vowels in string,"int count=0; for(char ch:s.toCharArray()) if(""aeiouAEIOU"".indexOf(ch)>=0) count++; System.out.println(count);"
+Find first non-repeating character,"Map<Character,Integer> m=new HashMap<>(); for(char ch:s.toCharArray()) m.put(ch,m.getOrDefault(ch,0)+1); for(char ch:s.toCharArray()) if(m.get(ch)==1){ System.out.println(ch); break; }"
+StringBuilder append example,"StringBuilder sb = new StringBuilder(""Hi""); sb.append("" World""); System.out.println(sb);"
+StringBuilder insert example,"StringBuilder sb = new StringBuilder(""Hi""); sb.insert(2,"" Java""); System.out.println(sb);"
+StringBuffer example,"StringBuffer sb = new StringBuffer(""Hi""); sb.append("" World""); System.out.println(sb); // thread-safe"
+Find longest substring without repeating characters,"Set<Character> set = new HashSet<>(); int l=0,maxLen=0; for(int r=0;r<s.length();r++){ while(set.contains(s.charAt(r))){ set.remove(s.charAt(l)); l++; } set.add(s.charAt(r)); maxLen=Math.max(maxLen,r-l+1); } System.out.println(maxLen);"
+Find all permutations of a string,"void permute(String str,String ans){ if(str.length()==0) System.out.println(ans); for(int i=0;i<str.length();i++){ char ch=str.charAt(i); String ros=str.substring(0,i)+str.substring(i+1); permute(ros,ans+ch); } }"
+Count occurrence of each character in string,"Map<Character,Integer> m=new HashMap<>(); for(char c:s.toCharArray()) m.put(c,m.getOrDefault(c,0)+1); System.out.println(m);"
+Declare 2D array in Java,"int[][] a = new int[3][3]; int[][] b = {{1,2,3},{4,5,6},{7,8,9}};"
+Traverse 2D array,for(int i=0;i<a.length;i++) for(int j=0;j<a[i].length;j++) System.out.println(a[i][j]);
+Sum of 2D array elements,int sum=0; for(int i=0;i<a.length;i++) for(int j=0;j<a[i].length;j++) sum+=a[i][j]; System.out.println(sum);
+Find max in 2D array,int max=a[0][0]; for(int i=0;i<a.length;i++) for(int j=0;j<a[i].length;j++) if(a[i][j]>max) max=a[i][j]; System.out.println(max);
+Check if two arrays are equal,"Arrays.equals(a,b);"
+Merge two arrays,"int[] c = new int[a.length+b.length]; System.arraycopy(a,0,c,0,a.length); System.arraycopy(b,0,c,a.length,b.length);"
+Find duplicate elements in array,Set<Integer> s = new HashSet<>(); for(int i:a){ if(!s.add(i)) System.out.println(i); }
+Find missing number in 1 to n array,"int total=n*(n+1)/2, sum=0; for(int i:a) sum+=i; System.out.println(total-sum);"
+java arrays strings summary,"Arrays: declaration, traversal, searching, sorting, reversal, 2D arrays, duplicates, sum, merge. Strings: length, compare, reverse, substring, palindrome, anagram, StringBuilder/Buffer, regex, permutations."

@@ -1,0 +1,51 @@
+question,answer
+What is Spring Framework?,Spring is a lightweight Java framework used to build enterprise applications through dependency injection and aspect-oriented programming.
+What is Dependency Injection in Spring?,Dependency Injection (DI) allows Spring to automatically provide required objects instead of manually creating them.
+What is Inversion of Control (IoC)?,IoC is a design principle where object creation and management are delegated to the Spring container.
+What are Spring Beans?,Beans are objects that form the backbone of a Spring application and are managed by the Spring IoC container.
+What is @Autowired used for?,@Autowired automatically injects dependencies by type without explicit configuration.
+"Explain @Component, @Service, and @Repository.","@Component is generic, @Service is for business logic, and @Repository is for database operations."
+What is ApplicationContext in Spring?,ApplicationContext is the central interface for providing configuration information to the Spring container.
+Explain @SpringBootApplication.,"@SpringBootApplication combines @Configuration, @EnableAutoConfiguration, and @ComponentScan annotations."
+What is Spring Boot?,Spring Boot simplifies application setup by providing defaults and auto-configuration.
+What is DispatcherServlet?,DispatcherServlet is the front controller in Spring MVC that handles all incoming HTTP requests.
+What is @RestController?,@RestController combines @Controller and @ResponseBody to create RESTful web services.
+What is @RequestMapping?,@RequestMapping maps web requests to specific controller methods.
+Explain @PathVariable annotation.,@PathVariable extracts values from URI paths and binds them to method parameters.
+Explain @RequestParam annotation.,@RequestParam extracts query parameters from request URLs.
+What is @RequestBody annotation?,@RequestBody maps the HTTP request body to a Java object.
+What is @ResponseBody annotation?,@ResponseBody binds the return value of a method to the HTTP response body.
+How to handle exceptions in Spring Boot?,Use @ControllerAdvice and @ExceptionHandler annotations for global exception handling.
+What is @Transactional?,@Transactional manages transaction boundaries automatically for methods.
+Explain Spring Data JPA.,Spring Data JPA simplifies data access by providing repository interfaces for CRUD operations.
+What is JpaRepository?,JpaRepository extends CrudRepository and adds JPA-specific methods like pagination and flushing.
+What is @Entity in Hibernate?,@Entity marks a class as a persistent entity representing a database table.
+Explain @Id annotation.,@Id marks a field as the primary key in a JPA entity.
+Explain @GeneratedValue.,"@GeneratedValue defines the strategy for primary key generation (AUTO, IDENTITY, SEQUENCE)."
+What is Hibernate?,Hibernate is an ORM framework that maps Java objects to database tables.
+What is SessionFactory?,SessionFactory creates Session objects and manages the lifecycle of database connections.
+Difference between get() and load() in Hibernate?,get() returns null if object not found; load() throws ObjectNotFoundException.
+What is lazy loading?,Lazy loading defers fetching of related data until it is actually accessed.
+What is eager loading?,Eager loading loads all related data immediately.
+Explain first-level and second-level caching in Hibernate.,First-level cache is per session; second-level cache is shared across sessions.
+What is @Table annotation?,@Table defines the database table name for the entity.
+What is @JoinColumn used for?,@JoinColumn specifies the foreign key column in an association mapping.
+Explain CascadeType.,CascadeType defines how operations propagate from parent to child entities.
+What is HQL?,HQL (Hibernate Query Language) is object-oriented and works with entities instead of tables.
+What is JPQL?,JPQL (Java Persistence Query Language) is similar to SQL but operates on entity objects.
+What is EntityManager?,"EntityManager manages persistence operations like persist, find, merge, and remove."
+Explain OneToMany mapping.,@OneToMany defines a one-to-many relationship between entities.
+Explain ManyToOne mapping.,@ManyToOne defines a many-to-one relationship from child to parent entity.
+What is optimistic locking?,Optimistic locking prevents concurrent update conflicts using version fields.
+What is @EnableJpaRepositories?,@EnableJpaRepositories enables scanning for JPA repositories.
+What is application.properties used for?,"It is used to define configuration values like database URL, username, and password."
+What is the purpose of data.sql in Spring Boot?,data.sql is automatically executed at startup to initialize the database with sample data.
+What is Liquibase or Flyway?,They are tools used for managing database schema versioning and migrations.
+How to test REST APIs in Spring Boot?,Use @SpringBootTest with MockMvc or RestTemplate for integration testing.
+What is the role of Tomcat in Spring Boot?,Spring Boot includes an embedded Tomcat server to run web applications directly.
+What is the default port for Spring Boot?,Spring Boot runs on port 8080 by default.
+How do you change the Spring Boot server port?,Use 'server.port=9090' in application.properties.
+Explain difference between CrudRepository and JpaRepository.,JpaRepository extends CrudRepository and adds more JPA-related methods.
+What is @ControllerAdvice used for?,@ControllerAdvice defines global exception handling and data binding.
+What is the purpose of application.yml?,"application.yml is an alternative to properties file, allowing structured configuration."
+How to secure Spring Boot API?,Use Spring Security with annotations like @EnableWebSecurity and configure authentication.

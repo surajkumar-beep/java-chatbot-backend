@@ -1,0 +1,47 @@
+question,answer
+What is ArrayList in Java?,ArrayList is a resizable array implementation of List interface.
+Create ArrayList example,"ArrayList<String> list = new ArrayList<>(); list.add(""A""); list.add(""B"");"
+Access elements in ArrayList,String s = list.get(0);
+Remove element from ArrayList,list.remove(0);
+Iterate ArrayList using for-each,for(String s : list) System.out.println(s);
+What is LinkedList in Java?,LinkedList is a doubly-linked list implementation of List and Deque interfaces.
+Add elements to LinkedList,LinkedList<Integer> ll = new LinkedList<>(); ll.add(10); ll.addFirst(5); ll.addLast(20);
+Remove element from LinkedList,ll.removeFirst(); ll.removeLast();
+What is Set in Java?,Set is a collection that contains no duplicate elements.
+HashSet example,"HashSet<String> hs = new HashSet<>(); hs.add(""A""); hs.add(""B"");"
+TreeSet example,TreeSet<Integer> ts = new TreeSet<>(); ts.add(3); ts.add(1); ts.add(2);
+What is Map in Java?,Map stores key-value pairs; keys are unique.
+HashMap example,"HashMap<String,Integer> map = new HashMap<>(); map.put(""A"",1); map.put(""B"",2);"
+Access value from HashMap,"int val = map.get(""A"");"
+TreeMap example,"TreeMap<String,Integer> tm = new TreeMap<>(); tm.put(""C"",3); tm.put(""A"",1);"
+Queue interface in Java,"Queue stores elements in FIFO order; implemented by LinkedList, PriorityQueue."
+PriorityQueue example,PriorityQueue<Integer> pq = new PriorityQueue<>(); pq.add(10); pq.add(5);
+Deque in Java,Deque is double-ended queue; implemented by LinkedList or ArrayDeque.
+ArrayDeque example,"ArrayDeque<String> dq = new ArrayDeque<>(); dq.addFirst(""A""); dq.addLast(""B"");"
+Generic class example,class Box<T>{ T value; void set(T v){ value=v; } T get(){ return value; } }
+Generic method example,static <T> void print(T val){ System.out.println(val); }
+Bounded generic example,class NumberBox<T extends Number>{ T value; }
+Iterator example for ArrayList,Iterator<String> it = list.iterator(); while(it.hasNext()){ System.out.println(it.next()); }
+Remove elements using Iterator,"Iterator<String> it = list.iterator(); while(it.hasNext()){ if(it.next().equals(""A"")) it.remove(); }"
+Comparable example,class Person implements Comparable<Person>{ int age; public int compareTo(Person p){ return this.age - p.age; } }
+Comparator example,"Comparator<Person> cmp = (p1,p2) -> p1.age - p2.age; Collections.sort(list, cmp);"
+Remove duplicates from ArrayList,"List<Integer> l = Arrays.asList(1,2,2,3); Set<Integer> s = new HashSet<>(l); l = new ArrayList<>(s);"
+Sort ArrayList of integers,Collections.sort(list);
+Reverse ArrayList,Collections.reverse(list);
+Find max in ArrayList,int max = Collections.max(list);
+Find min in ArrayList,int min = Collections.min(list);
+Convert array to ArrayList,"Integer[] arr = {1,2,3}; List<Integer> list = new ArrayList<>(Arrays.asList(arr));"
+Convert ArrayList to array,Integer[] arr = list.toArray(new Integer[0]);
+Count frequency of elements using HashMap,"Map<Integer,Integer> freq = new HashMap<>(); for(int x:arr) freq.put(x,freq.getOrDefault(x,0)+1);"
+Merge two HashMaps,map1.putAll(map2);
+Check if key exists in Map,"if(map.containsKey(""A"")) System.out.println(""Exists"");"
+Union of two sets,"Set<Integer> set1 = new HashSet<>(Arrays.asList(1,2)); Set<Integer> set2 = new HashSet<>(Arrays.asList(2,3)); set1.addAll(set2);"
+Intersection of two sets,set1.retainAll(set2);
+Difference of two sets,set1.removeAll(set2);
+Peek and Poll from Queue,int head = queue.peek(); int removed = queue.poll();
+Add and remove from Deque,deque.addFirst(1); deque.addLast(2); deque.removeFirst(); deque.removeLast();
+Collections.shuffle example,Collections.shuffle(list);
+Collections.sort with Comparator,"Collections.sort(list, (a,b)->b-a);"
+Convert List to Set,Set<Integer> s = new HashSet<>(list);
+Convert Set to List,List<Integer> l = new ArrayList<>(set);
+java collections summary,"Java Collections: List (ArrayList, LinkedList), Set (HashSet, TreeSet), Map (HashMap, TreeMap), Queue, Deque. Generics, Iterators, Comparable, Comparator, Collections utility methods."

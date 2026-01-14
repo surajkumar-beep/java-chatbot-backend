@@ -1,0 +1,149 @@
+question,answer
+What is file handling in Java?,"File handling allows Java programs to read and write data to files on the disk using classes like File, FileReader, and FileWriter."
+Which package is used for file handling?,The java.io and java.nio packages are used for file handling.
+How to create a file in Java?,File f = new File('demo.txt'); f.createNewFile();
+How to check if file exists?,File f = new File('data.txt'); if(f.exists()) System.out.println('Exists');
+How to delete a file?,File f = new File('old.txt'); f.delete();
+How to write to a file using FileWriter?,FileWriter fw = new FileWriter('out.txt'); fw.write('Hello'); fw.close();
+How to read from file using FileReader?,FileReader fr = new FileReader('data.txt'); int ch; while((ch=fr.read())!=-1) System.out.print((char)ch); fr.close();
+BufferedReader example,BufferedReader br = new BufferedReader(new FileReader('data.txt')); String line; while((line=br.readLine())!=null) System.out.println(line); br.close();
+BufferedWriter example,BufferedWriter bw = new BufferedWriter(new FileWriter('out.txt')); bw.write('Hi'); bw.newLine(); bw.close();
+Read file using Scanner,Scanner sc = new Scanner(new File('data.txt')); while(sc.hasNextLine()) System.out.println(sc.nextLine()); sc.close();
+How to get file size?,File f = new File('data.txt'); System.out.println(f.length());
+How to list all files in a directory?,File dir = new File('C:/folder'); for(File f : dir.listFiles()) System.out.println(f.getName());
+How to check if path is directory?,f.isDirectory();
+What is absolute path in Java?,It is the full path of a file or directory returned by f.getAbsolutePath().
+What is java.nio package?,It is a non-blocking I/O package for faster file and network operations.
+Read all lines using NIO Files class,List<String> lines = Files.readAllLines(Paths.get('data.txt'));
+Write to file using NIO,"Files.write(Paths.get('output.txt'), 'Hello'.getBytes());"
+Copy file using NIO,"Files.copy(Paths.get('a.txt'), Paths.get('b.txt'), StandardCopyOption.REPLACE_EXISTING);"
+Delete file using NIO,Files.delete(Paths.get('a.txt'));
+What is serialization?,Serialization is the process of converting an object into a byte stream for storage or transmission.
+Serializable example,class Student implements Serializable { int id; String name; }
+What is transient keyword?,It prevents serialization of specific fields.
+How to deserialize an object?,ObjectInputStream in = new ObjectInputStream(new FileInputStream('obj.txt')); Student s = (Student)in.readObject();
+What is JDBC?,JDBC (Java Database Connectivity) is an API to connect and execute queries on a database.
+Which package provides JDBC classes?,java.sql package.
+Steps to connect JDBC to database,1. Load driver 2. Create connection 3. Create statement 4. Execute query 5. Close connection.
+JDBC connection example,"Connection con = DriverManager.getConnection('jdbc:mysql://localhost:3306/db','user','pass');"
+Execute SELECT query example,Statement st = con.createStatement(); ResultSet rs = st.executeQuery('SELECT * FROM emp');
+What is PreparedStatement?,It is used to execute parameterized queries efficiently.
+PreparedStatement example,"PreparedStatement ps = con.prepareStatement('INSERT INTO emp VALUES (?,?)'); ps.setInt(1,1); ps.setString(2,'John'); ps.executeUpdate();"
+What is ResultSet?,It is a table of data returned by executing a query.
+How to iterate ResultSet?,while(rs.next()){ System.out.println(rs.getString(1)); }
+Close JDBC connection,con.close();
+What is networking in Java?,Networking allows communication between computers over a network using java.net package.
+What is Socket in Java?,Socket is an endpoint for communication between two machines.
+ServerSocket example,ServerSocket ss = new ServerSocket(6666); Socket s = ss.accept(); DataInputStream dis = new DataInputStream(s.getInputStream());
+Client socket example,"Socket s = new Socket('localhost',6666); DataOutputStream dout = new DataOutputStream(s.getOutputStream()); dout.writeUTF('Hello');"
+What is InetAddress class?,InetAddress represents IP address of a host.
+How to read data from URL in Java?,URL url = new URL('https://example.com'); BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+What is HttpURLConnection?,HttpURLConnection is used to send HTTP requests and receive responses.
+HttpURLConnection GET example,HttpURLConnection con = (HttpURLConnection) new URL('https://api.com').openConnection(); con.setRequestMethod('GET');
+What is DatagramSocket?,It is used for UDP connectionless communication.
+DatagramPacket example,"byte[] buf = new byte[1024]; DatagramPacket dp = new DatagramPacket(buf, buf.length, InetAddress.getByName('localhost'), 3000);"
+Difference between TCP and UDP in Java,"TCP is connection-oriented (Socket/ServerSocket), UDP is connectionless (DatagramSocket)."
+Get local host address example,InetAddress addr = InetAddress.getLocalHost(); System.out.println(addr.getHostAddress());
+Get host name from IP example,InetAddress addr = InetAddress.getByName('8.8.8.8'); System.out.println(addr.getHostName());
+Difference between InputStream and Reader classes,"InputStream reads bytes, Reader reads characters."
+Difference between FileInputStream and FileReader,"FileInputStream reads binary data, FileReader reads character data."
+What is Spring Framework?,Spring is a lightweight Java framework used to build enterprise applications through dependency injection and aspect-oriented programming.
+What is Dependency Injection in Spring?,Dependency Injection (DI) allows Spring to automatically provide required objects instead of manually creating them.
+What is Inversion of Control (IoC)?,IoC is a design principle where object creation and management are delegated to the Spring container.
+What are Spring Beans?,Beans are objects that form the backbone of a Spring application and are managed by the Spring IoC container.
+What is @Autowired used for?,@Autowired automatically injects dependencies by type without explicit configuration.
+"Explain @Component, @Service, and @Repository.","@Component is generic, @Service is for business logic, and @Repository is for database operations."
+What is ApplicationContext in Spring?,ApplicationContext is the central interface for providing configuration information to the Spring container.
+Explain @SpringBootApplication.,"@SpringBootApplication combines @Configuration, @EnableAutoConfiguration, and @ComponentScan annotations."
+What is Spring Boot?,Spring Boot simplifies application setup by providing defaults and auto-configuration.
+What is DispatcherServlet?,DispatcherServlet is the front controller in Spring MVC that handles all incoming HTTP requests.
+What is @RestController?,@RestController combines @Controller and @ResponseBody to create RESTful web services.
+What is @RequestMapping?,@RequestMapping maps web requests to specific controller methods.
+Explain @PathVariable annotation.,@PathVariable extracts values from URI paths and binds them to method parameters.
+Explain @RequestParam annotation.,@RequestParam extracts query parameters from request URLs.
+What is @RequestBody annotation?,@RequestBody maps the HTTP request body to a Java object.
+What is @ResponseBody annotation?,@ResponseBody binds the return value of a method to the HTTP response body.
+How to handle exceptions in Spring Boot?,Use @ControllerAdvice and @ExceptionHandler annotations for global exception handling.
+What is @Transactional?,@Transactional manages transaction boundaries automatically for methods.
+Explain Spring Data JPA.,Spring Data JPA simplifies data access by providing repository interfaces for CRUD operations.
+What is JpaRepository?,JpaRepository extends CrudRepository and adds JPA-specific methods like pagination and flushing.
+What is @Entity in Hibernate?,@Entity marks a class as a persistent entity representing a database table.
+Explain @Id annotation.,@Id marks a field as the primary key in a JPA entity.
+Explain @GeneratedValue.,"@GeneratedValue defines the strategy for primary key generation (AUTO, IDENTITY, SEQUENCE)."
+What is Hibernate?,Hibernate is an ORM framework that maps Java objects to database tables.
+What is SessionFactory?,SessionFactory creates Session objects and manages the lifecycle of database connections.
+Difference between get() and load() in Hibernate?,get() returns null if object not found; load() throws ObjectNotFoundException.
+What is lazy loading?,Lazy loading defers fetching of related data until it is actually accessed.
+What is eager loading?,Eager loading loads all related data immediately.
+Explain first-level and second-level caching in Hibernate.,First-level cache is per session; second-level cache is shared across sessions.
+What is @Table annotation?,@Table defines the database table name for the entity.
+What is @JoinColumn used for?,@JoinColumn specifies the foreign key column in an association mapping.
+Explain CascadeType.,CascadeType defines how operations propagate from parent to child entities.
+What is HQL?,HQL (Hibernate Query Language) is object-oriented and works with entities instead of tables.
+What is JPQL?,JPQL (Java Persistence Query Language) is similar to SQL but operates on entity objects.
+What is EntityManager?,"EntityManager manages persistence operations like persist, find, merge, and remove."
+Explain OneToMany mapping.,@OneToMany defines a one-to-many relationship between entities.
+Explain ManyToOne mapping.,@ManyToOne defines a many-to-one relationship from child to parent entity.
+What is optimistic locking?,Optimistic locking prevents concurrent update conflicts using version fields.
+What is @EnableJpaRepositories?,@EnableJpaRepositories enables scanning for JPA repositories.
+What is application.properties used for?,"It is used to define configuration values like database URL, username, and password."
+What is the purpose of data.sql in Spring Boot?,data.sql is automatically executed at startup to initialize the database with sample data.
+What is Liquibase or Flyway?,They are tools used for managing database schema versioning and migrations.
+How to test REST APIs in Spring Boot?,Use @SpringBootTest with MockMvc or RestTemplate for integration testing.
+What is the role of Tomcat in Spring Boot?,Spring Boot includes an embedded Tomcat server to run web applications directly.
+What is the default port for Spring Boot?,Spring Boot runs on port 8080 by default.
+How do you change the Spring Boot server port?,Use 'server.port=9090' in application.properties.
+Explain difference between CrudRepository and JpaRepository.,JpaRepository extends CrudRepository and adds more JPA-related methods.
+What is @ControllerAdvice used for?,@ControllerAdvice defines global exception handling and data binding.
+What is the purpose of application.yml?,"application.yml is an alternative to properties file, allowing structured configuration."
+How to secure Spring Boot API?,Use Spring Security with annotations like @EnableWebSecurity and configure authentication.
+What is a Design Pattern?,A design pattern is a general reusable solution to a commonly occurring problem in software design.
+Explain Singleton Pattern.,Singleton ensures only one instance of a class exists throughout the application.
+Explain Factory Pattern.,Factory pattern creates objects without exposing the creation logic to the client.
+What is Builder Pattern?,Builder pattern constructs complex objects step by step.
+Explain Prototype Pattern.,Prototype pattern creates new objects by cloning existing ones.
+What is Adapter Pattern?,Adapter converts the interface of a class into another interface clients expect.
+What is Observer Pattern?,Observer allows objects to subscribe and get notified when another object changes state.
+What is Strategy Pattern?,Strategy allows selecting an algorithm’s behavior at runtime.
+What is Decorator Pattern?,Decorator adds behavior to objects dynamically without altering their structure.
+What is Command Pattern?,"Command encapsulates a request as an object, allowing parameterization of clients."
+What is Proxy Pattern?,Proxy provides a surrogate object that controls access to another object.
+Explain MVC Pattern.,"MVC separates an application into Model, View, and Controller for better organization."
+What is DAO Pattern?,"DAO abstracts database interactions, allowing data access logic to be separate from business logic."
+Explain DTO Pattern.,DTO is used to transfer data between layers without exposing entities directly.
+What is Template Method Pattern?,Template Method defines a skeleton of an algorithm and lets subclasses fill in specific steps.
+What are Lambda Expressions?,Lambdas allow defining anonymous methods with concise syntax.
+What is Functional Interface?,A functional interface contains exactly one abstract method.
+What is Stream API?,"Stream API provides a functional way to process collections using map, filter, and reduce."
+Explain Optional class.,Optional helps avoid null pointer exceptions by providing a container object.
+What are default methods in interfaces?,Default methods allow adding new methods to interfaces without breaking implementations.
+Explain method references.,Method references provide shorthand for calling methods using '::' syntax.
+What is map() in streams?,map() transforms each element of a stream and returns a new stream.
+What is flatMap() in streams?,flatMap() flattens nested collections in a stream.
+What are terminal operations in streams?,"Terminal operations include collect(), count(), forEach(), reduce(), etc."
+Explain CompletableFuture.,CompletableFuture allows asynchronous programming with non-blocking calls.
+Explain Optional.orElse().,orElse() returns a default value if Optional is empty.
+What is JUnit?,JUnit is a Java testing framework for unit testing.
+What is @Test annotation?,@Test marks a method as a test case in JUnit.
+What is Mockito?,Mockito is a mocking framework used to simulate dependencies in tests.
+Explain assertEquals() in JUnit.,assertEquals() checks whether two values are equal in a test.
+What is TestNG?,TestNG is a testing framework that provides advanced features like dependency testing.
+What is Maven?,Maven is a build automation tool that manages project dependencies and lifecycle.
+What is Gradle?,Gradle is a build tool that uses Groovy/Kotlin DSL for flexible build scripts.
+What is Jenkins?,"Jenkins automates builds, testing, and deployment in CI/CD pipelines."
+What is Git?,Git is a distributed version control system for tracking code changes.
+What is GitHub?,GitHub is a cloud-based platform for hosting and collaborating on Git repositories.
+Explain version control.,Version control tracks changes and allows multiple developers to work on code simultaneously.
+What is reflection in Java?,Reflection allows inspection and modification of classes and methods at runtime.
+What is annotation processing?,Annotation processing generates code or performs validation at compile time.
+What is garbage collection?,Garbage collection automatically removes unused objects from memory.
+What is volatile keyword?,volatile ensures variable visibility across threads.
+What is synchronization?,Synchronization ensures mutual exclusion in multithreaded environments.
+What is ExecutorService?,ExecutorService manages and executes threads asynchronously.
+What is ForkJoinPool?,ForkJoinPool executes tasks in parallel using work-stealing algorithm.
+What is parallelStream()?,parallelStream() processes stream elements in parallel for faster performance.
+What is collect() in streams?,collect() gathers stream results into a collection or value.
+What is CompletableFuture.thenApply()?,thenApply() transforms the result of a CompletableFuture when it completes.
+What is the difference between Collection and Stream?,Collection stores data; Stream processes data in a functional way.
+Explain Predicate interface.,Predicate is a functional interface used to test a condition and return boolean.
+Explain Supplier interface.,Supplier is a functional interface that returns a value without taking any input.

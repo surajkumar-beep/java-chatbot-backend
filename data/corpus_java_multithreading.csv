@@ -1,0 +1,50 @@
+question,answer
+What is multithreading in Java?,Multithreading is a process of executing multiple threads simultaneously to improve performance.
+What is a thread?,A thread is a lightweight sub-process that shares memory but executes independently.
+How to create a thread in Java?,By extending Thread class or implementing Runnable interface.
+Example using Thread class,"class MyThread extends Thread { public void run(){ System.out.println(""Running""); } } new MyThread().start();"
+Example using Runnable interface,"class MyRunnable implements Runnable { public void run(){ System.out.println(""Running""); } } new Thread(new MyRunnable()).start();"
+Difference between start() and run(),start() creates a new thread and calls run(); run() executes in the current thread.
+Thread sleep example,Thread.sleep(1000); // pauses for 1 second
+Thread join example,t1.start(); t1.join(); // waits for t1 to finish
+Thread yield example,Thread.yield(); // gives chance to other threads
+Thread priority in Java,"Threads have priority 1 (MIN) to 10 (MAX), default 5 (NORM)."
+What is synchronization in Java?,Synchronization ensures that only one thread accesses a shared resource at a time.
+Synchronized method example,"synchronized void print(){ System.out.println(""Hello""); }"
+Synchronized block example,"synchronized(this){ System.out.println(""Safe block""); }"
+Static synchronized method,"static synchronized void demo(){ System.out.println(""Static lock""); }"
+What is inter-thread communication?,"It allows threads to communicate using wait(), notify(), and notifyAll()."
+"wait(), notify(), notifyAll() example",synchronized(obj){ obj.wait(); obj.notify(); obj.notifyAll(); }
+Why use wait() in synchronized block?,Because it releases the lock and allows other threads to acquire it.
+Thread lifecycle states,"New, Runnable, Running, Blocked/Waiting, Terminated."
+Check if thread is alive,t1.isAlive();
+Stop a thread,Use a flag instead of deprecated stop(). Example: while(running){ ... }
+What is daemon thread?,Daemon threads run in the background and terminate when all user threads finish.
+Example of daemon thread,Thread t = new Thread(task); t.setDaemon(true); t.start();
+What is ThreadGroup?,A ThreadGroup represents a group of related threads.
+Create ThreadGroup example,"ThreadGroup tg = new ThreadGroup(""MyGroup""); Thread t1 = new Thread(tg, task);"
+What is ReentrantLock in Java?,A lock that allows threads to re-enter the same lock multiple times.
+ReentrantLock example,Lock lock = new ReentrantLock(); lock.lock(); try{...} finally{lock.unlock();}
+What is Executor framework?,It provides a high-level API for managing threads using ThreadPool.
+ExecutorService example,ExecutorService ex = Executors.newFixedThreadPool(2); ex.execute(new Task()); ex.shutdown();
+Callable and Future example,Future<Integer> f = ex.submit(() -> 10); int res = f.get();
+SingleThreadExecutor example,ExecutorService ex = Executors.newSingleThreadExecutor(); ex.execute(task); ex.shutdown();
+What is CountDownLatch?,A synchronization aid that allows threads to wait until a set of operations complete.
+CountDownLatch example,CountDownLatch latch = new CountDownLatch(3); latch.countDown(); latch.await();
+What is Semaphore?,Semaphore controls number of threads accessing a resource.
+Semaphore example,Semaphore sem = new Semaphore(2); sem.acquire(); sem.release();
+What is CyclicBarrier?,A barrier that allows threads to wait for each other to reach a common point.
+CyclicBarrier example,CyclicBarrier cb = new CyclicBarrier(3); cb.await();
+Fixed Thread Pool example,ExecutorService pool = Executors.newFixedThreadPool(4); for(int i=0;i<5;i++) pool.execute(task);
+Cached Thread Pool example,ExecutorService pool = Executors.newCachedThreadPool(); pool.execute(task);
+Scheduled Thread Pool example,"ScheduledExecutorService ses = Executors.newScheduledThreadPool(1); ses.schedule(task, 5, TimeUnit.SECONDS);"
+What is ConcurrentHashMap?,ConcurrentHashMap allows concurrent access by multiple threads without synchronization on whole map.
+ConcurrentHashMap example,"ConcurrentHashMap<String,Integer> map = new ConcurrentHashMap<>(); map.put(""A"",1);"
+What is AtomicInteger?,AtomicInteger provides atomic operations on int values.
+AtomicInteger example,AtomicInteger count = new AtomicInteger(0); count.incrementAndGet();
+What is ThreadLocal?,ThreadLocal provides thread-local variables unique to each thread.
+ThreadLocal example,ThreadLocal<Integer> tl = ThreadLocal.withInitial(() -> 0); tl.set(10);
+Print numbers from 1 to 5 using two threads alternately,Use wait() and notify() to alternate between even and odd threads.
+Demonstrate thread synchronization with shared counter,synchronized void increment(){ count++; }
+Demonstrate race condition,"If two threads modify same variable without sync, result may be inconsistent."
+Java concurrency summary,"Java multithreading involves Thread, Runnable, Executor framework, synchronization, locks, wait/notify, and concurrent collections."
