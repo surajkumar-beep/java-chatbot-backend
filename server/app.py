@@ -1,4 +1,3 @@
-# test commit
 import sys
 from pathlib import Path
 
@@ -50,11 +49,11 @@ def looks_like_code(text: str) -> bool:
 # --------------------------------------------------
 # API ROUTES
 # --------------------------------------------------
-@app.route("/health", methods=["GET"])
-def health():
+@app.route("/", methods=["GET", "HEAD"])
+def health_check():
     return jsonify({
         "status": "ok",
-        "service": "Java Chatbot Backend"
+        "message": "Java Chatbot Backend is running"
     })
 
 @app.route("/api/query", methods=["POST"])
