@@ -122,50 +122,105 @@ def analyze_runtime_output(output: str) -> List[Dict[str, str]]:
 # MAIN ANALYZER
 # =========================================================
 
+import subprocess
+import tempfile
+import shutil
+from pathlib import Path
+
 def analyze_java_code(code: str):
     """
-    Compile → Analyze → Run → Suggest
+    Analyze Java code: compile → run → code smells → ALL issues combined
+    (NO duplicates, proper suggestions, SAFE for cloud)
     """
 
-    # Block Scanner input
-    if "Scanner" in code and re.search(r'next(Int|Line|)\s*\(', code):
+    # --------------------------------------------------
+    # 0. ENVIRONMENT GUARD (CRITICAL FOR RENDER)
+    # --------------------------------------------------
+    if shutil.which("javac") is None or shutil.which("java") is None:
+        return {
+            "success": False,
+            "compile_output": "",
+            "runtime_output": "",
+            "errors": [{
+                "id": "java_not_available",
+                "title": "🚫 Java Execution Not Available",
+                "explanation": (
+                    "This deployed server does not have Java (javac/java) installed. "
+                    "Because of security and platform limits, code execution is disabled."
+                ),
+                "fix_example": (
+                    "Run this code locally OR deploy using Docker with OpenJDK installed."
+                ),
+                "detail": "javac/java not found in server environment"
+            }]
+        }
+
+    # --------------------------------------------------
+    # 1. Check for input requirement
+    # --------------------------------------------------
+    if "Scanner" in code and ("nextInt()" in code or "nextLine()" in code or "next()" in code):
         return {
             "success": False,
             "compile_output": "",
             "runtime_output": "",
             "errors": [{
                 "id": "requires_input",
-                "title": "⌨️ User Input Required",
-                "explanation": "Programs using Scanner cannot be executed automatically.",
-                "fix_example": "Replace Scanner input with hardcoded values.",
-                "detail": "Scanner detected"
+                "title": "⌨️ Program Requires User Input",
+                "explanation": "Uses Scanner to read user input, which cannot be automated here.",
+                "fix_example": "Replace Scanner with hardcoded values or run locally.",
+                "detail": "Scanner usage detected"
             }]
         }
 
+    # --------------------------------------------------
+    # 2. Always detect code smells
+    # --------------------------------------------------
+    code_smells = detect_code_smells(code)
+
+    # --------------------------------------------------
+    # 3. Write code to temporary file
+    # --------------------------------------------------
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp_path = Path(tmpdir)
         class_name = find_public_class_name(code)
         java_file = tmp_path / f"{class_name}.java"
         java_file.write_text(code, encoding="utf-8")
 
-        # Compile
+        # --------------------------------------------------
+        # 4. Compile
+        # --------------------------------------------------
         compile_proc = subprocess.run(
             ["javac", str(java_file)],
             capture_output=True,
             text=True
         )
-
         compile_output = compile_proc.stdout + compile_proc.stderr
 
+        # --------------------------------------------------
+        # 5. Compilation failed → ONLY compile errors
+        # --------------------------------------------------
         if compile_proc.returncode != 0:
+            compile_errors = parse_javac_output(compile_output)
+
+            unique_errors = []
+            seen_ids = set()
+
+            for err in compile_errors:
+                eid = err.get("id")
+                if eid not in seen_ids:
+                    unique_errors.append(err)
+                    seen_ids.add(eid)
+
             return {
                 "success": False,
                 "compile_output": compile_output,
                 "runtime_output": "",
-                "errors": parse_javac_output(compile_output)
+                "errors": unique_errors
             }
 
-        # Run
+        # --------------------------------------------------
+        # 6. Run program
+        # --------------------------------------------------
         try:
             run_proc = subprocess.run(
                 ["java", "-cp", str(tmp_path), class_name],
@@ -173,27 +228,42 @@ def analyze_java_code(code: str):
                 text=True,
                 timeout=5
             )
-
             runtime_output = run_proc.stdout + run_proc.stderr
+
+            # --------------------------------------------------
+            # 7. Runtime error analysis
+            # --------------------------------------------------
             runtime_errors = analyze_runtime_output(runtime_output)
 
-            if runtime_errors:
+            # --------------------------------------------------
+            # 8. Combine runtime + smells (no duplicates)
+            # --------------------------------------------------
+            all_errors = []
+            seen_ids = set()
+
+            for err in runtime_errors:
+                eid = err.get("id")
+                if eid not in seen_ids:
+                    all_errors.append(err)
+                    seen_ids.add(eid)
+
+            for smell in code_smells:
+                sid = smell.get("id")
+                if sid not in seen_ids:
+                    all_errors.append(smell)
+                    seen_ids.add(sid)
+
+            if all_errors:
                 return {
                     "success": False,
                     "compile_output": compile_output,
                     "runtime_output": runtime_output,
-                    "errors": runtime_errors
+                    "errors": all_errors[:3]
                 }
 
-            smells = detect_code_smells(code)
-            if smells:
-                return {
-                    "success": False,
-                    "compile_output": compile_output,
-                    "runtime_output": runtime_output,
-                    "errors": smells[:1]
-                }
-
+            # --------------------------------------------------
+            # 9. Perfect execution
+            # --------------------------------------------------
             return {
                 "success": True,
                 "compile_output": compile_output,
@@ -201,16 +271,32 @@ def analyze_java_code(code: str):
                 "errors": []
             }
 
+        # --------------------------------------------------
+        # 10. Timeout handling
+        # --------------------------------------------------
         except subprocess.TimeoutExpired:
+            timeout_error = [{
+                "id": "timeout",
+                "title": "⏱️ Execution Timeout",
+                "explanation": "Program exceeded 5-second limit (possible infinite loop).",
+                "fix_example": "Add proper loop conditions or optimize code.",
+                "detail": "Timeout after 5 seconds"
+            }]
+
+            combined = []
+            seen_ids = set()
+
+            for err in timeout_error:
+                combined.append(err)
+                seen_ids.add(err["id"])
+
+            for smell in code_smells:
+                if smell["id"] not in seen_ids:
+                    combined.append(smell)
+
             return {
                 "success": False,
                 "compile_output": compile_output,
-                "runtime_output": "",
-                "errors": [{
-                    "id": "timeout",
-                    "title": "⏱️ Execution Timeout",
-                    "explanation": "The program took too long to execute.",
-                    "fix_example": "Check for infinite loops.",
-                    "detail": "Timeout after 5 seconds"
-                }]
+                "runtime_output": "Program execution timed out.",
+                "errors": combined
             }
