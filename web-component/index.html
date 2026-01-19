@@ -1,13 +1,33 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>Java Chatbot Test</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java Chatbot Assistant</title>
+  <link rel="stylesheet" href="java-chatbot.css">
 </head>
+
 <body>
+  <div class="header">
+    <h1>Java Chatbot Assistant</h1>
+    <p>Ask questions or paste your Java code for analysis</p>
+  </div>
 
-<java-chatbot></java-chatbot>
+  <div id="chat-container">
+    <div id="chat-box"></div>
 
-<script src="java-chatbot.js"></script>
+    <div class="typing-indicator" id="typing">
+      <span></span><span></span><span></span>
+    </div>
 
+    <div class="input-area">
+      <div class="input-wrapper">
+        <textarea id="input" placeholder="Type your question or paste Java code..." rows="2"></textarea>
+        <button id="sendBtn">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="java-chatbot.js"></script>
 </body>
 </html>
