@@ -1167,21 +1167,23 @@ from pathlib import Path
 def analyze_java_code(code: str):
     """
     Analyze Java code: compile → run → code smells → ALL issues combined
-    SAFE FOR CLOUD (Render): disables execution if javac is unavailable
+    (NO duplicates, proper suggestions, SAFE for cloud)
     """
 
-    # 🔒 HARD GUARD — REQUIRED FOR RENDER / CLOUD
+    # --------------------------------------------------
+    # 0. ENVIRONMENT GUARD (CRITICAL FOR RENDER)
+    # --------------------------------------------------
     if shutil.which("javac") is None or shutil.which("java") is None:
         return {
             "success": False,
-            "compile_output": "Java execution is disabled on the deployed server.",
+            "compile_output": "",
             "runtime_output": "",
             "errors": [{
                 "id": "java_not_available",
                 "title": "🚫 Java Execution Not Available",
                 "explanation": (
-                    "The deployed backend does not have Java (javac/java) installed. "
-                    "Code execution is disabled for security and platform limitations."
+                    "This deployed server does not have Java (javac/java) installed. "
+                    "Because of security and platform limits, code execution is disabled."
                 ),
                 "fix_example": (
                     "Run this code locally OR deploy using Docker with OpenJDK installed."
@@ -1190,7 +1192,9 @@ def analyze_java_code(code: str):
             }]
         }
 
-    # 1. Block programs requiring input
+    # --------------------------------------------------
+    # 1. Check for input requirement
+    # --------------------------------------------------
     if "Scanner" in code and ("nextInt()" in code or "nextLine()" in code or "next()" in code):
         return {
             "success": False,
@@ -1205,17 +1209,23 @@ def analyze_java_code(code: str):
             }]
         }
 
+    # --------------------------------------------------
     # 2. Always detect code smells
+    # --------------------------------------------------
     code_smells = detect_code_smells(code)
 
-    # 3. Write Java file
+    # --------------------------------------------------
+    # 3. Write code to temporary file
+    # --------------------------------------------------
     with tempfile.TemporaryDirectory() as tmpdir:
         tmp_path = Path(tmpdir)
         class_name = find_public_class_name(code)
         java_file = tmp_path / f"{class_name}.java"
         java_file.write_text(code, encoding="utf-8")
 
+        # --------------------------------------------------
         # 4. Compile
+        # --------------------------------------------------
         compile_proc = subprocess.run(
             ["javac", str(java_file)],
             capture_output=True,
@@ -1223,24 +1233,31 @@ def analyze_java_code(code: str):
         )
         compile_output = compile_proc.stdout + compile_proc.stderr
 
+        # --------------------------------------------------
+        # 5. Compilation failed → ONLY compile errors
+        # --------------------------------------------------
         if compile_proc.returncode != 0:
             compile_errors = parse_javac_output(compile_output)
 
-            unique = []
-            seen = set()
-            for e in compile_errors:
-                if e["id"] not in seen:
-                    unique.append(e)
-                    seen.add(e["id"])
+            unique_errors = []
+            seen_ids = set()
+
+            for err in compile_errors:
+                eid = err.get("id")
+                if eid not in seen_ids:
+                    unique_errors.append(err)
+                    seen_ids.add(eid)
 
             return {
                 "success": False,
                 "compile_output": compile_output,
                 "runtime_output": "",
-                "errors": unique
+                "errors": unique_errors
             }
 
-        # 5. Run program
+        # --------------------------------------------------
+        # 6. Run program
+        # --------------------------------------------------
         try:
             run_proc = subprocess.run(
                 ["java", "-cp", str(tmp_path), class_name],
@@ -1250,20 +1267,28 @@ def analyze_java_code(code: str):
             )
             runtime_output = run_proc.stdout + run_proc.stderr
 
+            # --------------------------------------------------
+            # 7. Runtime error analysis
+            # --------------------------------------------------
             runtime_errors = analyze_runtime_output(runtime_output)
 
+            # --------------------------------------------------
+            # 8. Combine runtime + smells (no duplicates)
+            # --------------------------------------------------
             all_errors = []
-            seen = set()
+            seen_ids = set()
 
-            for e in runtime_errors:
-                if e["id"] not in seen:
-                    all_errors.append(e)
-                    seen.add(e["id"])
+            for err in runtime_errors:
+                eid = err.get("id")
+                if eid not in seen_ids:
+                    all_errors.append(err)
+                    seen_ids.add(eid)
 
             for smell in code_smells:
-                if smell["id"] not in seen:
+                sid = smell.get("id")
+                if sid not in seen_ids:
                     all_errors.append(smell)
-                    seen.add(smell["id"])
+                    seen_ids.add(sid)
 
             if all_errors:
                 return {
@@ -1273,6 +1298,9 @@ def analyze_java_code(code: str):
                     "errors": all_errors[:3]
                 }
 
+            # --------------------------------------------------
+            # 9. Perfect execution
+            # --------------------------------------------------
             return {
                 "success": True,
                 "compile_output": compile_output,
@@ -1280,6 +1308,9 @@ def analyze_java_code(code: str):
                 "errors": []
             }
 
+        # --------------------------------------------------
+        # 10. Timeout handling
+        # --------------------------------------------------
         except subprocess.TimeoutExpired:
             timeout_error = [{
                 "id": "timeout",
@@ -1290,14 +1321,14 @@ def analyze_java_code(code: str):
             }]
 
             combined = []
-            seen = set()
+            seen_ids = set()
 
-            for e in timeout_error:
-                combined.append(e)
-                seen.add(e["id"])
+            for err in timeout_error:
+                combined.append(err)
+                seen_ids.add(err["id"])
 
             for smell in code_smells:
-                if smell["id"] not in seen:
+                if smell["id"] not in seen_ids:
                     combined.append(smell)
 
             return {
@@ -1306,4 +1337,3 @@ def analyze_java_code(code: str):
                 "runtime_output": "Program execution timed out.",
                 "errors": combined
             }
-
